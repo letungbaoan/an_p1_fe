@@ -1,0 +1,37 @@
+{
+  "newsletter_title": "Đăng ký nhận bản tin để nhận ưu đãi £10",
+  "newsletter_subtitle": "Đăng ký ngay để nhận thông tin khuyến mãi và mã giảm giá mới nhất. Đừng lo, chúng tôi sẽ không gửi spam!",
+  "newsletter_placeholder": "Nhập địa chỉ email của bạn",
+  "newsletter_send": "GỬI",
+  "newsletter_agreement": "Bằng cách đăng ký, bạn đồng ý với",
+  "newsletter_terms": "Điều khoản & Chính sách bảo mật của chúng tôi.",
+
+  "help_title": "Bạn cần hỗ trợ?",
+  "help_desc": "Chúng tôi luôn sẵn sàng giúp đỡ bạn.",
+  "help_hours": "Thứ Hai–Thứ Sáu: 08h00–21h00",
+  "help_support": "Cần hỗ trợ về đơn hàng?",
+
+  "money_title": "Kiếm tiền cùng chúng tôi",
+  "money_items": ["Bán hàng trên Grogin", "Cung cấp dịch vụ", "Quảng cáo sản phẩm", "Trở thành đối tác liên kết"],
+
+  "helpYou_title": "Hỗ trợ khách hàng",
+  "helpYou_items": ["Đơn hàng của bạn", "Trả hàng & hoàn tiền", "Phí vận chuyển", "Chính sách hoàn tiền"],
+
+  "knowUs_title": "Về chúng tôi",
+  "knowUs_items": ["Giới thiệu Grogin", "Tuyển dụng", "Quan hệ nhà đầu tư", "Trách nhiệm xã hội"],
+
+  "download_title": "Tải ứng dụng của chúng tôi",
+  "download_discount": "Tải app để nhận ưu đãi đặc biệt",
+
+  "bottom_copyright": "Bản quyền © 2025 Shopstore. Mọi quyền được bảo lưu.",
+  "bottom_terms": "Điều khoản sử dụng",
+  "bottom_privacy": "Chính sách bảo mật",
+  "bottom_tracking": "Theo dõi đơn hàng",
+
+  "title": "Đăng ký nhận bản tin",
+  "subtitle": "Đăng ký ngay để nhận những cập nhật mới nhất về các chương trình khuyến mãi và phiếu giảm giá (coupon). Đừng lo, chúng tôi không gửi thư rác (spam)!",
+  "placeholder": "Nhập địa chỉ email của bạn",
+  "send": "Gửi",
+  "agreement": "Bằng việc đăng ký, bạn đồng ý với",
+  "terms": "Điều khoản & Chính sách"
+}

@@ -9,5 +9,7 @@ export const ROUTES = {
   FRUITS: '/fruits',
   BEVERAGES: '/beverages',
   BLOG: '/blog',
-  CONTACT: '/contact'
+  CONTACT: '/contact',
+  TERMS: '/terms',
+  PRIVACY: '/privacy'
 } as const

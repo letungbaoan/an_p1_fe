@@ -1,0 +1,37 @@
+{
+  "newsletter_title": "Join our newsletter for £10 offs",
+  "newsletter_subtitle": "Register now to get latest updates on promotions & coupons. Don't worry, we won't spam!",
+  "newsletter_placeholder": "Enter your email address",
+  "newsletter_send": "SEND",
+  "newsletter_agreement": "By subscribing you agree to our",
+  "newsletter_terms": "Terms & Conditions and Privacy Policy.",
+
+  "help_title": "Do You Need Help ?",
+  "help_desc": "Autoseligen syr. Nek diarask fröbomba.",
+  "help_hours": "Monday–Friday: 08am–9pm",
+  "help_support": "Need help with your order?",
+
+  "money_title": "Make Money with Us",
+  "money_items": ["Sell on Grogin", "Sell Your Services", "Advertise Products", "Become an Affiliate"],
+
+  "helpYou_title": "Let Us Help You",
+  "helpYou_items": ["Your Orders", "Returns", "Shipping Rates", "Refund Policy"],
+
+  "knowUs_title": "Get to Know Us",
+  "knowUs_items": ["About Grogin", "Careers", "Investor Relations", "Social Responsibility"],
+
+  "download_title": "Download our app",
+  "download_discount": "Download app and get discount",
+
+  "bottom_copyright": "Copyright 2025 © Shopstore. All rights reserved.",
+  "bottom_terms": "Terms and Conditions",
+  "bottom_privacy": "Privacy Policy",
+  "bottom_tracking": "Order Tracking",
+
+  "title": "Subscribe to Our Newsletter",
+  "subtitle": "Register now to get latest updates on promotions & coupons. Don’t worry, we not spam!",
+  "placeholder": "Enter your email address",
+  "send": "Subscribe",
+  "agreement": "By subscribing, you agree to our",
+  "terms": "Terms & Conditions"
+}
