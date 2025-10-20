@@ -1,0 +1,13 @@
+{
+  "category": {
+    "fruits_vegetables": "Fruits & Vegetables",
+    "baby_pregnancy": "Baby & Pregnancy",
+    "beverages": "Beverages",
+    "meats_seafood": "Meats & Seafood",
+    "biscuits_snacks": "Biscuits & Snacks",
+    "breads_bakery": "Breads & Bakery",
+    "breakfast_dairy": "Breakfast & Dairy",
+    "frozen_foods": "Frozen Foods",
+    "grocery_staples": "Grocery & Staples"
+  }
+}

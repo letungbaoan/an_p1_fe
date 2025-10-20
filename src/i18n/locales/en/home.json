@@ -1,0 +1,42 @@
+{
+  "banner_slides": {
+    "slide_1": {
+      "tag": "Special Offer!",
+      "title": "Shocking 40% Off on All Organic Products",
+      "description": "A golden opportunity to shop for clean, high-quality food at incredible prices. Don't miss out!",
+      "button_text": "View Now"
+    },
+    "slide_2": {
+      "tag": "New Arrival!",
+      "title": "Experience the New Flavor of TeeChia Superfood Cereal",
+      "description": "TeeChia - the perfect blend of nutrition and flavor. Boost your energy for a long day.",
+      "button_text": "Buy Now"
+    }
+  },
+  "section_headers": {
+    "new_products": {
+      "title": "NEW PRODUCTS",
+      "subtitle": "Some of the new products arriving this weeks"
+    },
+    "new_arrivals": {
+      "title": "New Arrivals",
+      "subtitle": "Do not miss the current offers until the end of month."
+    },
+    "deals_of_the_day": {
+      "title": "Deals Of The Day",
+      "subtitle": "The freshest greengrocer products are waiting for you"
+    },
+    "top_categories": {
+      "title": "Top Categories",
+      "subtitle": "New products with updated stocks."
+    },
+    "featured_products": {
+      "title": "Featured Products",
+      "subtitle": "Do not miss the current offers until the end of month."
+    }
+  },
+  "common": {
+    "offer_note": "Don't miss this limited time offer.",
+    "view_all": "View All"
+  }
+}
