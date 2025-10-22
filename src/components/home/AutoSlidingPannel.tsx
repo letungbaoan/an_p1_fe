@@ -30,7 +30,6 @@ const AutoSlidingTabPanel: React.FC = () => {
       try {
         setError('')
         const res = await api.get(API_ENDPOINTS.BANNERS)
-        console.log('Banner data:', res.data)
         setBannerSlides(res.data || [])
       } catch (error) {
         setError(t('error_fetch_banners', { error: error }))

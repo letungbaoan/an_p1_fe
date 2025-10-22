@@ -22,7 +22,7 @@ const CategoryList: React.FC = () => {
   }
 
   if (loading === 'failed' && error) {
-    return <div className='p-8 text-center text-red-500'>{`Lỗi: ${error}`}</div>
+    return <div className='p-8 text-center text-red-500'>{t('status:error_fetch', { error: error })}</div>
   }
 
   return (

@@ -1,4 +1,6 @@
 {
   "loading": "Loading data ...",
-  "retry": "Retry"
+  "retry": "Retry",
+  "shop_now": "Shop Now",
+  "error_loading_data": "Error loading data: {{error}}"
 }

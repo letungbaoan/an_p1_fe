@@ -1,4 +1,6 @@
 {
   "loading": "Đang tải dữ liệu ...",
-  "retry": "Thử lại"
+  "retry": "Thử lại",
+  "shop_now": "Mua ngay",
+  "error_loading_data": "Lỗi khi tải dữ liệu: {{error}}"
 }

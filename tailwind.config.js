@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'light-gray': '#6B7280'
+        'light-gray': '#6B7280',
+        'gradient-start': '#FFD200',
+        'gradient-end': '#DC2626'
       }
     }
   },

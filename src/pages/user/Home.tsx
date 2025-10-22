@@ -1,12 +1,14 @@
 import AutoSlidingTabPanel from '@/components/home/AutoSlidingPannel'
-import SectionHeader from '@/components/home/SectionHeader'
 import CategorySection from '@/components/home/CategorySection'
 import SafetyBannerSection from '@/components/home/SafetyBannerSection'
 import NewProductSection from '@/components/home/NewProductSection'
+import NewArrivalSection from '@/components/home/NewArrivalSection'
+import FeturedProductsSection from '@/components/home/FeaturedProductsSection'
+import DealsOfTheDaySection from '@/components/home/DealsOfTheDaySection'
 
 export default function Home() {
   return (
-    <div className='space-y-10'>
+    <div className='space-y-6'>
       <AutoSlidingTabPanel />
 
       <CategorySection />
@@ -15,18 +17,11 @@ export default function Home() {
 
       <NewProductSection />
 
-      <SectionHeader
-        titleKey='section_headers.new_arrivals.title'
-        subtitleKey='section_headers.new_arrivals.subtitle'
-      />
-      <SectionHeader
-        titleKey='section_headers.featured_products.title'
-        subtitleKey='section_headers.featured_products.subtitle'
-      />
-      <SectionHeader
-        titleKey='section_headers.deals_of_the_day.title'
-        subtitleKey='section_headers.deals_of_the_day.subtitle'
-      />
+      <NewArrivalSection />
+
+      <FeturedProductsSection />
+
+      <DealsOfTheDaySection />
     </div>
   )
 }

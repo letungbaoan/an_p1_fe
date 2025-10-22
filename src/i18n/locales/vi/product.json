@@ -1,0 +1,12 @@
+{
+  "add_to_cart": "Thêm vào giỏ hàng",
+  "run_out_soon": "Sản phẩm này sắp hết hàng",
+  "available_only": "Chỉ còn: {{count}}",
+  "remain_until": "Còn lại đến cuối chương trình khuyến mãi",
+  "offer_ended": "Chương trình khuyến mãi đã kết thúc",
+  "invalid_end_time": "Thời gian kết thúc không hợp lệ",
+  "No image": "Không có hình ảnh",
+  "no_name": "Sản phẩm chưa có tên",
+  "no_description": "Chưa có mô tả",
+  "no_deals": "Không có ưu đãi"
+}

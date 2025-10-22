@@ -15,6 +15,10 @@ import viNotfound from './locales/vi/notfound.json'
 import enNotfound from './locales/en/notfound.json'
 import viStatus from './locales/vi/status.json'
 import enStatus from './locales/en/status.json'
+import viPromotion from './locales/vi/promotion.json'
+import enPromotion from './locales/en/promotion.json'
+import viProduct from './locales/vi/product.json'
+import enProduct from './locales/en/product.json'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -25,7 +29,9 @@ i18n.use(initReactI18next).init({
       category: enCategory,
       common: enCommon,
       notfound: enNotfound,
-      status: enStatus
+      status: enStatus,
+      promotion: enPromotion,
+      product: enProduct
     },
     vi: {
       header: viHeader,
@@ -34,12 +40,14 @@ i18n.use(initReactI18next).init({
       category: viCategory,
       common: viCommon,
       notfound: viNotfound,
-      status: viStatus
+      status: viStatus,
+      promotion: viPromotion,
+      product: viProduct
     }
   },
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['header', 'footer', 'home', 'category', 'common', 'notfound', 'status'],
+  ns: ['header', 'footer', 'home', 'category', 'common', 'notfound', 'status', 'promotion', 'product'],
   defaultNS: 'common',
   interpolation: {
     escapeValue: false
