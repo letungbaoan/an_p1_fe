@@ -11,5 +11,6 @@ export const ROUTES = {
   BLOG: '/blog',
   CONTACT: '/contact',
   TERMS: '/terms',
-  PRIVACY: '/privacy'
+  PRIVACY: '/privacy',
+  PRODUCTS: '/products'
 } as const

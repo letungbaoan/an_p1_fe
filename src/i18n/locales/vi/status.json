@@ -1,0 +1,8 @@
+{
+  "loading_products": "Đang tải sản phẩm mới...",
+  "error_fetch": "Lỗi: Không thể tải sản phẩm ({{error}})",
+  "empty_products": "Hiện không có sản phẩm mới nào.",
+  "no_banners": "Hiện không có banner nào.",
+  "loading_banners": "Đang tải banner...",
+  "error_fetch_banners": "Lỗi: Không thể tải banner ({{error}})"
+}

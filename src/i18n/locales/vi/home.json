@@ -1,0 +1,42 @@
+{
+  "banner_slides": {
+    "slide_1": {
+      "tag": "Ưu đãi Đặc biệt!",
+      "title": "Giảm giá cực sốc 40% cho tất cả sản phẩm Organic",
+      "description": "Cơ hội vàng để mua sắm thực phẩm sạch và chất lượng cao với mức giá không tưởng. Đừng bỏ lỡ!",
+      "button_text": "Xem Ngay"
+    },
+    "slide_2": {
+      "tag": "Hàng mới về!",
+      "title": "Trải nghiệm hương vị mới với hạt dinh dưỡng TeeChia",
+      "description": "TeeChia - sự kết hợp hoàn hảo giữa dinh dưỡng và hương vị. Bổ sung năng lượng cho ngày dài.",
+      "button_text": "Mua Ngay"
+    }
+  },
+  "section_headers": {
+    "new_products": {
+      "title": "SẢN PHẨM MỚI",
+      "subtitle": "Một số sản phẩm mới về trong tuần này"
+    },
+    "new_arrivals": {
+      "title": "Hàng Mới Về",
+      "subtitle": "Đừng bỏ lỡ các ưu đãi hiện có cho đến cuối tháng."
+    },
+    "deals_of_the_day": {
+      "title": "Ưu Đãi Trong Ngày",
+      "subtitle": "Các sản phẩm rau quả tươi ngon nhất đang chờ bạn"
+    },
+    "top_categories": {
+      "title": "Danh Mục Hàng Đầu",
+      "subtitle": "Sản phẩm mới với số lượng được cập nhật."
+    },
+    "featured_products": {
+      "title": "Sản Phẩm Nổi Bật",
+      "subtitle": "Đừng bỏ lỡ các ưu đãi hiện có cho đến cuối tháng."
+    }
+  },
+  "common": {
+    "offer_note": "Đừng bỏ lỡ cơ hội giới hạn thời gian này!",
+    "view_all": "Xem Tất Cả"
+  }
+}
