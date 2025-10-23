@@ -64,7 +64,14 @@
       "route": "/products?category_slug=grocery-staples"
     }
   ],
-
+  "userFeature": {
+    "name": "Machic",
+    "status": "Featured",
+    "rating": 4.5,
+    "reviewCount": 41,
+    "imageUrl": "https://placehold.co/40x40/6366f1/ffffff?text=M",
+    "description": "Good quality product can only be found in good stores"
+  },
   "banners": [
     {
       "id": 1,
@@ -85,6 +92,68 @@
       "buttonTextKey": "banner_slides.slide_2.button_text",
       "originalPrice": "$35.00",
       "discountPrice": "$21.57"
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "titleKey": "promo_a.title",
+      "subtitleKey": "promo_a.subtitle",
+      "imgUrl": "/assets/banner/promotion_1.png"
+    },
+    {
+      "id": 2,
+      "titleKey": "promo_b.title",
+      "subtitleKey": "promo_b.subtitle",
+      "imgUrl": "/assets/banner/promotion_2.png"
+    },
+    {
+      "id": 3,
+      "titleKey": "promo_c.title",
+      "subtitleKey": "promo_c.subtitle",
+      "imgUrl": "/assets/banner/promotion_3.png"
+    },
+    {
+      "id": 4,
+      "titleKey": "promo_d.title",
+      "subtitleKey": "promo_d.subtitle",
+      "imgUrl": "/assets/banner/promotion_4.png"
+    },
+    {
+      "id": 5,
+      "titleKey": "promo_e.title",
+      "subtitleKey": "promo_e.subtitle",
+      "imgUrl": "/assets/banner/promotion_5.png"
+    },
+    {
+      "id": 6,
+      "titleKey": "promo_f.title",
+      "subtitleKey": "promo_f.subtitle",
+      "imgUrl": "/assets/banner/promotion_6.png"
+    },
+    {
+      "id": 7,
+      "titleKey": "promo_g.title",
+      "subtitleKey": "promo_g.subtitle",
+      "imgUrl": "/assets/banner/promotion_7.png"
+    },
+    {
+      "id": 8,
+      "titleKey": "promo_h.title",
+      "subtitleKey": "promo_h.subtitle",
+      "imgUrl": "/assets/banner/promotion_8.png"
+    },
+    {
+      "id": 9,
+      "titleKey": "promo_i.title",
+      "subtitleKey": "promo_i.subtitle",
+      "imgUrl": "/assets/banner/promotion_9.png"
+    },
+    {
+      "id": 10,
+      "titleKey": "promo_j.title",
+      "subtitleKey": "promo_j.subtitle",
+      "imgUrl": "/assets/banner/promotion_10.png"
     }
   ],
   "products": [
@@ -123,9 +192,6 @@
       "name": "Fresh Pork Loin (2kg)",
       "price": 18.0,
       "description": "Clean, safe, high-quality pork. Ideal for roasting and large meals.",
-      "category_id": 1,
-      "stockQuantity": 60,
-      "discountPercentage": 20,
       "rating": 4.5,
       "reviewCount": 55,
       "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],

@@ -4,7 +4,7 @@ import productsReducer from './slices/productsSlice'
 
 const rootReducer = combineReducers({
   category: categoryReducer,
-  product: productsReducer
+  products: productsReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

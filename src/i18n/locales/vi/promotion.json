@@ -1,0 +1,46 @@
+{
+  "only_this_week": "Chỉ trong tuần này",
+  "promo_a": {
+    "title": "Chúng tôi cung cấp cho bạn các sản phẩm chất lượng tốt nhất",
+    "subtitle": "Chỉ trong tuần này. Đừng bỏ lỡ"
+  },
+  "promo_b": {
+    "title": "Chúng tôi làm cho việc mua sắm tạp hóa của bạn trở nên thú vị hơn",
+    "subtitle": "Nuôi dưỡng gia đình bạn với những điều tốt nhất"
+  },
+  "promo_c": {
+    "title": "Siêu thị duy nhất giúp bạn tiết kiệm tiền",
+    "subtitle": "Ăn một cái mỗi ngày"
+  },
+  "promo_d": {
+    "title": "Nơi hương vị gặp gỡ sự phải chăng.",
+    "subtitle": "Chỉ trong tuần này. Đừng bỏ lỡ"
+  },
+  "promo_e": {
+    "title": "Cung cấp cho bạn chất lượng như bạn mong đợi",
+    "subtitle": "Nuôi dưỡng gia đình bạn với những điều tốt nhất"
+  },
+  "promo_f": {
+    "title": "Cửa hàng tạp hóa ở trung tâm thành phố",
+    "subtitle": "Chỉ trong tuần này. Đừng bỏ lỡ"
+  },
+  "promo_g": {
+    "title": "Một cửa hàng thông minh cho mọi người",
+    "subtitle": "Nuôi dưỡng gia đình bạn với những điều tốt nhất"
+  },
+  "promo_h": {
+    "title": "Chúng tôi ở đây vì những người yêu thích mua sắm",
+    "subtitle": "Ăn một cái mỗi ngày"
+  },
+  "promo_i": {
+    "title": "Nhận các sản phẩm giá cả phải chăng với chúng tôi",
+    "subtitle": "Chỉ trong tuần này. Đừng bỏ lỡ"
+  },
+  "promo_j": {
+    "title": "Cửa hàng tạp hóa ở trung tâm thành phố",
+    "subtitle": "Nuôi dưỡng gia đình bạn với những điều tốt nhất"
+  },
+  "loading": "Đang tải banner...",
+  "fetch_error": "Lỗi tải banner: {{error}}",
+  "no_banner": "Không có banner banner"
+}

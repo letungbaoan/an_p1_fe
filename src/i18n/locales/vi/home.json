@@ -38,5 +38,23 @@
   "common": {
     "offer_note": "Đừng bỏ lỡ cơ hội giới hạn thời gian này!",
     "view_all": "Xem Tất Cả"
+  },
+  "feature": {
+    "online_payment": {
+      "title": "Thanh toán chỉ trực tuyến",
+      "desc": "Đảm bảo thanh toán. Thanh toán di động."
+    },
+    "new_stocks": {
+      "title": "Kho hàng mới và ưu đãi",
+      "desc": "Cập nhật kho hàng. Ưu đãi hấp dẫn."
+    },
+    "quality": {
+      "title": "Đảm bảo chất lượng",
+      "desc": "Thiết kế thân thiện. Kiểm tra chất lượng."
+    },
+    "delivery": {
+      "title": "Giao hàng từ 1 giờ",
+      "desc": "Giao hàng nhanh chóng. Thanh toán di động."
+    }
   }
 }

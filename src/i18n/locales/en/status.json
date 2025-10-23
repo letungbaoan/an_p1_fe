@@ -4,5 +4,6 @@
   "empty_products": "There are currently no new products.",
   "no_banners": "No banners available at the moment.",
   "loading_banners": "Loading banners...",
-  "error_fetch_banners": "Error: Unable to load banners ({{error}})"
+  "error_fetch_banners": "Error: Unable to load banners ({{error}})",
+  "no_deals": "No deals available at the moment."
 }

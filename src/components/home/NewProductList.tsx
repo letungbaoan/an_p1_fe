@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { fetchNewProducts } from '@/redux/slices/productsSlice'
-import ProductCard from '@/components/common/ProductCard'
+import ProductCard from '@/components/common/VerticalProductCard'
 import { useTranslation } from 'react-i18next'
 
 const NewProductList: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { newProducts, loading, error } = useAppSelector((state) => state.product)
   const { t } = useTranslation()
+
+  const { newProducts, loading, error } = useAppSelector((state) => ({
+    newProducts: state.products.newProducts,
+    loading: state.products.loadingNew,
+    error: state.products.error
+  }))
 
   useEffect(() => {
     if (loading === 'idle') {

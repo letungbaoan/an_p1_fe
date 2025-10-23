@@ -1,0 +1,46 @@
+{
+  "only_this_week": "Only this week",
+  "promo_a": {
+    "title": "We provide you the best quality products",
+    "subtitle": "Only this week. Don't miss out"
+  },
+  "promo_b": {
+    "title": "We make your grocery shopping more exciting",
+    "subtitle": "Feed your family the best"
+  },
+  "promo_c": {
+    "title": "The one supermarket that saves your money",
+    "subtitle": "Eat one every day"
+  },
+  "promo_d": {
+    "title": "Where flavor meets affordability.",
+    "subtitle": "Only this week. Don't miss out"
+  },
+  "promo_e": {
+    "title": "Provides you the quality that's you expected",
+    "subtitle": "Feed your family the best"
+  },
+  "promo_f": {
+    "title": "Grocery store at the center of the city",
+    "subtitle": "Only this week. Don't miss out"
+  },
+  "promo_g": {
+    "title": "A smart store for every people",
+    "subtitle": "Feed your family the best"
+  },
+  "promo_h": {
+    "title": "We are here for shopping lovers",
+    "subtitle": "Eat one every day"
+  },
+  "promo_i": {
+    "title": "Get pocket-friendly products with us",
+    "subtitle": "Only this week. Don't miss out"
+  },
+  "promo_j": {
+    "title": "Grocery store at the center of the city",
+    "subtitle": "Feed your family the best"
+  },
+  "loading": "Loading banner...",
+  "fetch_error": "Fetch banner error: {{error}}",
+  "no_banner": "No banner"
+}

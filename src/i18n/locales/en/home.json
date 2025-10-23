@@ -38,5 +38,23 @@
   "common": {
     "offer_note": "Don't miss this limited time offer.",
     "view_all": "View All"
+  },
+  "feature": {
+    "online_payment": {
+      "title": "Payment only online",
+      "desc": "Tasigförsamhet beteendedesign. Mobile checkout. Ylig kärntorpa."
+    },
+    "new_stocks": {
+      "title": "New stocks and sales",
+      "desc": "Tasigförsamhet beteendedesign. Mobile checkout. Ylig kärntorpa."
+    },
+    "quality": {
+      "title": "Quality assurance",
+      "desc": "Tasigförsamhet beteendedesign. Mobile checkout. Ylig kärntorpa."
+    },
+    "delivery": {
+      "title": "Delivery from 1 hour",
+      "desc": "Tasigförsamhet beteendedesign. Mobile checkout. Ylig kärntorpa."
+    }
   }
 }

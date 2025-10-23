@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
+
 import SectionHeader from '@/components/home/SectionHeader'
-import NewProductList from '@/components/home/NewProductList'
 import PromotionCard from '@/components/home/HorizontalPromotionCard'
+import NewArrivalProductList from '@/components/home/NewArrivalProductList'
+
 import type { BannerData } from '@/types/banner'
 import api from '@/utils/api'
 import { API_ENDPOINTS } from '@/constants/api'
 import { useTranslation } from 'react-i18next'
 
-const NewProductSection: React.FC = () => {
+const NewArrivalSection: React.FC = () => {
   const [promotions, setPromotions] = useState<BannerData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -30,12 +32,12 @@ const NewProductSection: React.FC = () => {
 
   if (loading) {
     return (
-      <div className='space-y-6'>
+      <div className=''>
         <SectionHeader
-          titleKey='section_headers.new_products.title'
-          subtitleKey='section_headers.new_products.subtitle'
+          titleKey='section_headers.new_arrivals.title'
+          subtitleKey='section_headers.new_arrivals.subtitle'
         />
-        <NewProductList />
+        <NewArrivalProductList />
         <div className='py-8 text-center'>{t('loading')}</div>
       </div>
     )
@@ -43,28 +45,28 @@ const NewProductSection: React.FC = () => {
 
   if (error) {
     return (
-      <div className='space-y-6'>
+      <div className=''>
         <SectionHeader
-          titleKey='section_headers.new_products.title'
-          subtitleKey='section_headers.new_products.subtitle'
+          titleKey='section_headers.new_arrivals.title'
+          subtitleKey='section_headers.new_arrivals.subtitle'
         />
-        <NewProductList />
+        <NewArrivalProductList />
         <div className='py-8 text-center text-red-500'>{error}</div>
       </div>
     )
   }
 
-  const displayedPromotions = promotions.slice(0, 3)
+  const displayedPromotions = promotions.slice(4, 6)
 
   return (
-    <div className='space-y-6'>
+    <div className=''>
       <SectionHeader
-        titleKey='section_headers.new_products.title'
-        subtitleKey='section_headers.new_products.subtitle'
+        titleKey='section_headers.new_arrivals.title'
+        subtitleKey='section_headers.new_arrivals.subtitle'
       />
-      <NewProductList />
+      <NewArrivalProductList />
 
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
+      <div className='mt-20 grid grid-cols-1 gap-4 md:grid-cols-2'>
         {displayedPromotions.map((promo) => (
           <PromotionCard
             key={promo.id}
@@ -79,4 +81,4 @@ const NewProductSection: React.FC = () => {
   )
 }
 
-export default NewProductSection
+export default NewArrivalSection

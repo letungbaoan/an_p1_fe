@@ -1,24 +1,29 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Heart, Plus } from 'lucide-react'
-import type { Product } from '@/types/category'
+import type { Product } from '@/types/product'
 import ProductRating from '@/components/common/ProductRating'
+import SafeImage from '@/components/common/SafeImage'
+import { useTranslation } from 'react-i18next'
 
 interface ProductCardProps {
   product: Product
+  className?: string
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
+  const { t } = useTranslation('product')
   const navigate = useNavigate()
 
   const discount = product.discountPercentage || 0
   const isDiscounted = discount > 0
 
-  let originalPrice = product.price
+  const price = product.price || 0
+  const originalPrice = isDiscounted ? price / (1 - discount / 100) : price
 
-  if (isDiscounted) {
-    originalPrice = product.price / (1 - discount / 100)
-  }
+  const rating = product.rating ?? 0
+  const reviewCount = product.reviewCount ?? 0
+  const name = product.name || t('no_name')
 
   const handleTitleClick = () => {
     navigate(`/products/${product.id}`)
@@ -33,7 +38,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }
 
   return (
-    <div className='group relative min-h-[200px] w-full overflow-hidden border border-gray-200 bg-white shadow-sm transition duration-300 hover:shadow-md'>
+    <div
+      className={`group relative min-h-[200px] w-full overflow-hidden border border-gray-200 bg-white shadow-sm transition duration-300 hover:shadow-md ${className}`}
+    >
       <div className='relative flex h-40 items-center justify-center bg-gray-50 p-2'>
         {isDiscounted && (
           <div className='absolute left-2 top-2 z-10 rounded-full bg-red-600 px-2 py-0.5 text-xs font-bold text-white'>
@@ -48,23 +55,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Heart className='text-gray-400 hover:text-red-500' size={16} />
         </button>
 
-        <img src={product.imageUrls[0]} alt={product.name} className='max-h-full max-w-full object-contain' />
+        <SafeImage
+          src={Array.isArray(product.imageUrls) && product.imageUrls.length > 0 ? product.imageUrls[0] : undefined}
+          alt={name}
+          className='max-h-full max-w-full rounded object-contain'
+        />
       </div>
 
       <div className='p-2'>
-        <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
+        <ProductRating rating={rating} reviewCount={reviewCount} />
 
         <h3
           className='mb-1 line-clamp-1 cursor-pointer text-sm font-semibold text-gray-800 transition hover:text-purple-600'
           onClick={handleTitleClick}
         >
-          {product.name}
+          {name}
         </h3>
 
         <div className='mt-2 flex items-center justify-between'>
           <div className='flex flex-row items-center space-x-2'>
-            <span className='text-lg font-bold text-red-600'>${product.price.toFixed(2)}</span>{' '}
-            {isDiscounted && <span className='text-base text-black line-through'>${originalPrice.toFixed(2)}</span>}
+            <span className='text-lg font-bold text-red-600'>${price.toFixed(2)}</span>
+            {isDiscounted && <span className='text-base text-gray-600 line-through'>${originalPrice.toFixed(2)}</span>}
           </div>
 
           <button

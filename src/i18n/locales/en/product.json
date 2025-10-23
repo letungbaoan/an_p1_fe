@@ -1,0 +1,12 @@
+{
+  "add_to_cart": "Add to cart",
+  "run_out_soon": "This product is about to run out",
+  "available_only": "Available only: {{count}}",
+  "remain_until": "Remains until the end of the offer",
+  "offer_ended": "The offer has ended",
+  "invalid_end_time": "Invalid end time",
+  "no_image": "No image",
+  "no_name": "No name",
+  "no_description": "No description",
+  "no_deals": "No deals"
+}
