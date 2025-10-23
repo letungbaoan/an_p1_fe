@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Heart, ShoppingCart } from 'lucide-react'
 import type { Product } from '@/types/product'
 import ProductRating from '@/components/common/ProductRating'
-import { useTranslation } from 'react-i18next'
+import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
+import toast from 'react-hot-toast'
 import SafeImage from '@/components/common/SafeImage'
+import { useTranslation } from 'react-i18next'
 
 interface ProductCardLargeProps {
   product: Product
 }
 
 const ProductCardLarge: React.FC<ProductCardLargeProps> = ({ product }) => {
-  const { t } = useTranslation('product')
+  const { t } = useTranslation(['product', 'toast'])
+  const [liked, setLiked] = useState(false)
+
+  useEffect(() => {
+    setLiked(isInWishlist(product.id))
+  }, [product.id])
+
   const discountPercentage = product.discountPercentage ?? 0
   const price = product.price ?? 0
   const rating = product.rating ?? 0
@@ -27,6 +35,15 @@ const ProductCardLarge: React.FC<ProductCardLargeProps> = ({ product }) => {
 
   const handleAddToCartClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+    addToCart(product)
+    toast.success(t('add_to_cart_success', { ns: 'toast' }))
+  }
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    toggleWishlist(product)
+    setLiked(!liked)
+    toast.success(!liked ? t('wishlist_add_success', { ns: 'toast' }) : t('wishlist_remove_success', { ns: 'toast' }))
   }
 
   return (
@@ -38,14 +55,17 @@ const ProductCardLarge: React.FC<ProductCardLargeProps> = ({ product }) => {
           </div>
         )}
 
-        <button className='absolute right-4 top-4 z-10 rounded-full bg-white p-2 shadow-md transition hover:scale-110'>
-          <Heart size={20} className='text-gray-400 hover:text-red-500' />
+        <button
+          onClick={handleFavoriteClick}
+          className='absolute right-4 top-4 z-10 rounded-full bg-white p-2 shadow-md transition hover:scale-110'
+        >
+          <Heart size={20} className={liked ? 'text-red-500' : 'text-gray-400'} />
         </button>
 
         <SafeImage
           src={imageUrls.length > 0 ? imageUrls[0] : undefined}
           alt={name}
-          className='max-h-full max-w-full rounded object-contain'
+          className='max-h-full max-w-full rounded object-contain drop-shadow-lg'
         />
       </div>
 

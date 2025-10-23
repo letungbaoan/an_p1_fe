@@ -3,5 +3,6 @@ export const API_ENDPOINTS = {
   PRODUCTS: '/products',
   BANNERS: '/banners',
   PROMOTIONS: '/promotions',
-  USER_FEATURE: '/userFeature'
+  USER_FEATURE: '/userFeature',
+  USERS: '/users'
 }

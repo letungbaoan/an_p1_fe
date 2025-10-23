@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import categoryReducer from './slices/categorySlice'
 import productsReducer from './slices/productsSlice'
+import authReducer from './slices/authSlice'
 
 const rootReducer = combineReducers({
   category: categoryReducer,
-  products: productsReducer
+  products: productsReducer,
+  auth: authReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

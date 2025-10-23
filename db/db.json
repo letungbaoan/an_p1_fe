@@ -1,67 +1,111 @@
 {
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "image": "assets/home/list1.png",
       "nameKey": "category.fruits_vegetables",
       "slug": "fruits-vegetables",
       "route": "/products?category_slug=fruits-vegetables"
     },
     {
-      "id": 2,
+      "id": "2",
       "image": "assets/home/list2.png",
       "nameKey": "category.baby_pregnancy",
       "slug": "baby-pregnancy",
       "route": "/products?category_slug=baby-pregnancy"
     },
     {
-      "id": 3,
+      "id": "3",
       "image": "assets/home/list3.png",
       "nameKey": "category.beverages",
       "slug": "beverages",
       "route": "/products?category_slug=beverages"
     },
     {
-      "id": 4,
+      "id": "4",
       "image": "assets/home/list4.png",
       "nameKey": "category.meats_seafood",
       "slug": "meats-seafood",
       "route": "/products?category_slug=meats-seafood"
     },
     {
-      "id": 5,
+      "id": "5",
       "image": "assets/home/list5.png",
       "nameKey": "category.biscuits_snacks",
       "slug": "biscuits-snacks",
       "route": "/products?category_slug=biscuits-snacks"
     },
     {
-      "id": 6,
+      "id": "6",
       "image": "assets/home/list6.png",
       "nameKey": "category.breads_bakery",
       "slug": "breads-bakery",
       "route": "/products?category_slug=breads-bakery"
     },
     {
-      "id": 7,
+      "id": "7",
       "image": "assets/home/list7.png",
       "nameKey": "category.breakfast_dairy",
       "slug": "breakfast-dairy",
       "route": "/products?category_slug=breakfast-dairy"
     },
     {
-      "id": 8,
+      "id": "8",
       "image": "assets/home/list8.png",
       "nameKey": "category.frozen_foods",
       "slug": "frozen-foods",
       "route": "/products?category_slug=frozen-foods"
     },
     {
-      "id": 9,
+      "id": "9",
       "image": "assets/home/list9.png",
       "nameKey": "category.grocery_staples",
       "slug": "grocery-staples",
       "route": "/products?category_slug=grocery-staples"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin1",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "1761115369131",
+      "username": "123456",
+      "email": "baoan7604@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "1761117374143",
+      "username": "baoan7604@gmail.com",
+      "email": "baoan7604@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "1761117379734",
+      "username": "baoan7604@gmail.com",
+      "email": "baoan7604@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": 1761295827638,
+      "username": "baoan7604@gmail.com",
+      "email": "baoan7604@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": 1761296390126,
+      "username": "baoan7604@gmail.com",
+      "email": "baoan7604@gmail.com",
+      "password": "123456",
+      "role": "user"
     }
   ],
   "userFeature": {
@@ -74,7 +118,7 @@
   },
   "banners": [
     {
-      "id": 1,
+      "id": "1",
       "backgroundImageSrc": "assets/home/tabpannel_1.png",
       "tagKey": "banner_slides.slide_1.tag",
       "titleKey": "banner_slides.slide_1.title",
@@ -84,7 +128,7 @@
       "discountPrice": "$15.99"
     },
     {
-      "id": 2,
+      "id": "2",
       "backgroundImageSrc": "assets/home/tabpannel_2.png",
       "tagKey": "banner_slides.slide_2.tag",
       "titleKey": "banner_slides.slide_2.title",
@@ -96,61 +140,61 @@
   ],
   "promotions": [
     {
-      "id": 1,
+      "id": "1",
       "titleKey": "promo_a.title",
       "subtitleKey": "promo_a.subtitle",
       "imgUrl": "/assets/banner/promotion_1.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "titleKey": "promo_b.title",
       "subtitleKey": "promo_b.subtitle",
       "imgUrl": "/assets/banner/promotion_2.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "titleKey": "promo_c.title",
       "subtitleKey": "promo_c.subtitle",
       "imgUrl": "/assets/banner/promotion_3.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "titleKey": "promo_d.title",
       "subtitleKey": "promo_d.subtitle",
       "imgUrl": "/assets/banner/promotion_4.png"
     },
     {
-      "id": 5,
+      "id": "5",
       "titleKey": "promo_e.title",
       "subtitleKey": "promo_e.subtitle",
       "imgUrl": "/assets/banner/promotion_5.png"
     },
     {
-      "id": 6,
+      "id": "6",
       "titleKey": "promo_f.title",
       "subtitleKey": "promo_f.subtitle",
       "imgUrl": "/assets/banner/promotion_6.png"
     },
     {
-      "id": 7,
+      "id": "7",
       "titleKey": "promo_g.title",
       "subtitleKey": "promo_g.subtitle",
       "imgUrl": "/assets/banner/promotion_7.png"
     },
     {
-      "id": 8,
+      "id": "8",
       "titleKey": "promo_h.title",
       "subtitleKey": "promo_h.subtitle",
       "imgUrl": "/assets/banner/promotion_8.png"
     },
     {
-      "id": 9,
+      "id": "9",
       "titleKey": "promo_i.title",
       "subtitleKey": "promo_i.subtitle",
       "imgUrl": "/assets/banner/promotion_9.png"
     },
     {
-      "id": 10,
+      "id": "10",
       "titleKey": "promo_j.title",
       "subtitleKey": "promo_j.subtitle",
       "imgUrl": "/assets/banner/promotion_10.png"
@@ -158,7 +202,7 @@
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Organic Beef Steak (1kg)",
       "price": 12.5,
       "description": "Premium, organic, perfect for BBQ. No hormones or antibiotics guaranteed.",
@@ -167,13 +211,17 @@
       "discountPercentage": 15,
       "rating": 3.5,
       "reviewCount": 145,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-05T12:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Grass-Fed Ground Beef (500g)",
       "price": 7.99,
       "description": "Pure ground beef, low fat, ideal for spaghetti or homemade burgers.",
@@ -182,25 +230,33 @@
       "discountPercentage": 10,
       "rating": 4.7,
       "reviewCount": 98,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-10T10:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Fresh Pork Loin (2kg)",
-      "price": 18.0,
+      "price": 18,
       "description": "Clean, safe, high-quality pork. Ideal for roasting and large meals.",
       "rating": 4.5,
       "reviewCount": 55,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-01T15:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Norwegian Salmon Fillet (300g)",
       "price": 9.5,
       "description": "Imported salmon from Norway, rich in Omega-3, fresh and nutritious.",
@@ -209,13 +265,17 @@
       "discountPercentage": 5,
       "rating": 4.9,
       "reviewCount": 210,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-10-28T09:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Frozen Tiger Prawns (500g)",
       "price": 15.99,
       "description": "Large tiger prawns, cleaned and flash-frozen to preserve natural sweetness.",
@@ -224,13 +284,17 @@
       "discountPercentage": 12,
       "rating": 4.6,
       "reviewCount": 72,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-03T18:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Organic Chicken Breast Fillet",
       "price": 6.75,
       "description": "Skinless, boneless, organic chicken breast. High protein, low calorie.",
@@ -239,28 +303,36 @@
       "discountPercentage": 8,
       "rating": 4.7,
       "reviewCount": 112,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-08T14:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "USDA Prime Beef Ribs",
-      "price": 22.0,
+      "price": 22,
       "description": "Prime grade beef ribs, tender and perfect for stewing or grilling.",
       "category_id": 1,
       "stockQuantity": 40,
       "discountPercentage": 18,
       "rating": 4.9,
       "reviewCount": 180,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-15T11:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Fresh Squid Tube (400g)",
       "price": 8.5,
       "description": "Fresh squid tube, cleaned, ready to be prepared for seafood dishes.",
@@ -269,13 +341,17 @@
       "discountPercentage": 10,
       "rating": 4.4,
       "reviewCount": 41,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-10-25T16:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Whole Cleaned Free-Range Chicken",
       "price": 14.99,
       "description": "Locally raised chicken, savory and firm meat, suitable for boiling or hot pot.",
@@ -284,13 +360,17 @@
       "discountPercentage": 15,
       "rating": 4.6,
       "reviewCount": 88,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-06T13:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Fresh Goat Meat (500g)",
       "price": 11.2,
       "description": "Fresh, lean goat meat, ideal for stir-frying or curry.",
@@ -299,13 +379,17 @@
       "discountPercentage": 7,
       "rating": 4.3,
       "reviewCount": 32,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-02T17:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Vietnamese Fish Paste (Chả Cá)",
       "price": 5.99,
       "description": "Fresh, chewy fish paste, preservative-free, safe for the whole family.",
@@ -314,28 +398,36 @@
       "discountPercentage": 10,
       "rating": 4.5,
       "reviewCount": 65,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-07T08:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Live Sea Crab (Premium Grade)",
-      "price": 35.0,
+      "price": 35,
       "description": "Grade 1 sea crab, firm and naturally sweet meat. Sold by weight.",
       "category_id": 1,
       "stockQuantity": 25,
       "discountPercentage": 25,
-      "rating": 5.0,
+      "rating": 5,
       "reviewCount": 240,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-10-30T20:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Free-Range Eggs (Box of 10)",
       "price": 3.5,
       "description": "Fresh eggs with rich golden yolks, high nutritional value.",
@@ -344,13 +436,17 @@
       "discountPercentage": 5,
       "rating": 4.8,
       "reviewCount": 160,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-12T10:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Cleaned Muscovy Duck",
       "price": 16.5,
       "description": "Farm-raised Muscovy duck, fatty and delicious, suitable for roasting.",
@@ -359,13 +455,17 @@
       "discountPercentage": 10,
       "rating": 4.5,
       "reviewCount": 50,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-04T19:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Whiteleg Shrimp (Penaeus vannamei)",
       "price": 11.99,
       "description": "Farm-raised shrimp, clean, uniform size, ready for cooking.",
@@ -374,28 +474,36 @@
       "discountPercentage": 15,
       "rating": 4.4,
       "reviewCount": 78,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-09T14:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Frozen Babylonia Aretica Snail",
-      "price": 28.0,
+      "price": 28,
       "description": "Large aromatic snails, pre-processed, retaining freshness.",
       "category_id": 1,
       "stockQuantity": 30,
       "discountPercentage": 20,
       "rating": 4.7,
       "reviewCount": 105,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-11T16:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Smoked Pork Sausages",
       "price": 4.5,
       "description": "German smoked sausages, distinctly flavored, convenient for breakfast.",
@@ -404,13 +512,17 @@
       "discountPercentage": 5,
       "rating": 4.3,
       "reviewCount": 90,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-13T11:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Frozen Octopus (500g)",
       "price": 9.99,
       "description": "Fresh octopus, frozen, ready for grilling or hot pot dishes.",
@@ -419,13 +531,17 @@
       "discountPercentage": 10,
       "rating": 4.6,
       "reviewCount": 61,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-10-27T17:00:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Capon (Castrated Rooster) Meat",
       "price": 19.5,
       "description": "Capon meat, tender, fatty, excellent for holidays and special occasions.",
@@ -434,13 +550,17 @@
       "discountPercentage": 15,
       "rating": 4.8,
       "reviewCount": 130,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-11-14T13:30:00Z",
       "inStock": true,
       "onSale": true
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Fresh Clams, Mussels & Cockles (1kg)",
       "price": 5.2,
       "description": "Fresh clams, mussels, and cockles, used for soups or steaming.",
@@ -449,7 +569,11 @@
       "discountPercentage": 8,
       "rating": 4.4,
       "reviewCount": 48,
-      "imageUrls": ["assets/item/item_1.png", "assets/item/item_2.png", "assets/item/item_3.png"],
+      "imageUrls": [
+        "assets/item/item_1.png",
+        "assets/item/item_2.png",
+        "assets/item/item_3.png"
+      ],
       "dealEndTime": "2025-10-29T09:30:00Z",
       "inStock": true,
       "onSale": true
