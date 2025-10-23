@@ -19,6 +19,14 @@ import viPromotion from './locales/vi/promotion.json'
 import enPromotion from './locales/en/promotion.json'
 import viProduct from './locales/vi/product.json'
 import enProduct from './locales/en/product.json'
+import viToast from './locales/vi/toast.json'
+import enToast from './locales/en/toast.json'
+import viAuth from './locales/vi/auth.json'
+import enAuth from './locales/en/auth.json'
+import viContact from './locales/vi/contact.json'
+import enContact from './locales/en/contact.json'
+import viCart from './locales/vi/cart.json'
+import enCart from './locales/en/cart.json'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -31,7 +39,11 @@ i18n.use(initReactI18next).init({
       notfound: enNotfound,
       status: enStatus,
       promotion: enPromotion,
-      product: enProduct
+      product: enProduct,
+      toast: enToast,
+      auth: enAuth,
+      contact: enContact,
+      cart: enCart
     },
     vi: {
       header: viHeader,
@@ -42,12 +54,30 @@ i18n.use(initReactI18next).init({
       notfound: viNotfound,
       status: viStatus,
       promotion: viPromotion,
-      product: viProduct
+      product: viProduct,
+      toast: viToast,
+      auth: viAuth,
+      contact: viContact,
+      cart: viCart
     }
   },
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['header', 'footer', 'home', 'category', 'common', 'notfound', 'status', 'promotion', 'product'],
+  ns: [
+    'header',
+    'footer',
+    'home',
+    'category',
+    'common',
+    'notfound',
+    'status',
+    'promotion',
+    'product',
+    'toast',
+    'auth',
+    'contact',
+    'cart'
+  ],
   defaultNS: 'common',
   interpolation: {
     escapeValue: false

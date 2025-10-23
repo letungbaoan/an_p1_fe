@@ -2,7 +2,7 @@ export const ROUTES = {
   HOME: '/',
   ABOUT: '/about',
   WISHLIST: '/wishlist',
-  LOGIN: '/login',
+  LOGIN: '/auth',
   MY_ACCOUNT: '/my-account',
   ORDER_TRACKING: '/order-tracking',
   SHOP: '/shop',
@@ -12,5 +12,7 @@ export const ROUTES = {
   CONTACT: '/contact',
   TERMS: '/terms',
   PRIVACY: '/privacy',
-  PRODUCTS: '/products'
+  PRODUCTS: '/products',
+  PROFILE: '/profile',
+  CART: '/cart'
 } as const
