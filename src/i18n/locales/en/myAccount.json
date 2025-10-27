@@ -1,0 +1,22 @@
+{
+  "tabs": {
+    "profile": "Profile",
+    "orderHistory": "Order History"
+  },
+  "profileForm": {
+    "title": "Profile",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Leave as ******** to keep current password",
+    "saveButton": "Save",
+    "saving": "Saving...",
+    "updating": "Updating...",
+    "success": "Profile updated successfully!",
+    "error": "Update failed with error: {{error}}",
+    "error_username": "Username must be at least 6 characters.",
+    "error_email": "Invalid email address.",
+    "error_password": "Password must be at least 6 characters."
+  },
+  "orderHistoryComingSoon": "Order History page is coming soon..."
+}

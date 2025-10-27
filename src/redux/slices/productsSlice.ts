@@ -4,6 +4,24 @@ import { API_ENDPOINTS } from '@/constants/api'
 import axios from 'axios'
 import type { Product } from '@/types/product'
 
+export interface ProductFilters {
+  page: number
+  limit: number
+  categoryIds?: number[]
+  minPrice?: number
+  maxPrice?: number
+  minRating?: number
+}
+
+interface ProductQueryParams {
+  _page: number
+  _limit: number
+  category_id?: number[]
+  price_gte?: number
+  price_lte?: number
+  rating_gte?: number
+}
+
 export interface FeaturedParams {
   limit: number
   page: number
@@ -12,16 +30,22 @@ export interface FeaturedParams {
 interface ProductsState {
   newProducts: Product[]
   featuredProducts: Product[]
+  listProducts: Product[]
+  totalPages: number
   loadingNew: 'idle' | 'pending' | 'succeeded' | 'failed'
   loadingFeatured: 'idle' | 'pending' | 'succeeded' | 'failed'
+  loadingList: 'idle' | 'pending' | 'succeeded' | 'failed'
   error: string | null
 }
 
 const initialState: ProductsState = {
   newProducts: [],
   featuredProducts: [],
+  listProducts: [],
+  totalPages: 1,
   loadingNew: 'idle',
   loadingFeatured: 'idle',
+  loadingList: 'idle',
   error: null
 }
 
@@ -62,6 +86,40 @@ export const fetchFeaturedProducts = createAsyncThunk<Product[], FeaturedParams>
   }
 )
 
+export const fetchProductList = createAsyncThunk<{ products: Product[]; totalPages: number }, ProductFilters>(
+  'products/fetchProductList',
+  async (filters, { rejectWithValue }) => {
+    try {
+      const { page, limit, categoryIds, minPrice, maxPrice, minRating } = filters
+
+      const params: ProductQueryParams = {
+        _page: page,
+        _limit: limit,
+        ...(categoryIds && categoryIds.length > 0 && { category_id: categoryIds }),
+        ...(minPrice && { price_gte: minPrice }),
+        ...(maxPrice && { price_lte: maxPrice }),
+        ...(minRating && { rating_gte: minRating })
+      }
+
+      const response = await api.get<Product[]>(API_ENDPOINTS.PRODUCTS, {
+        params
+      })
+
+      const totalCountHeader = response.headers['x-total-count']
+      const totalCount = totalCountHeader ? parseInt(totalCountHeader) : response.data.length
+      const totalPages = Math.ceil(totalCount / limit)
+
+      return { products: response.data, totalPages }
+    } catch (error) {
+      let errorMessage = 'Failed to load product list.'
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.message
+      }
+      return rejectWithValue(errorMessage)
+    }
+  }
+)
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -94,6 +152,22 @@ export const productsSlice = createSlice({
         state.loadingFeatured = 'failed'
         state.error = (action.payload as string) || 'Could not load featured products.'
         state.featuredProducts = []
+      })
+
+      .addCase(fetchProductList.pending, (state) => {
+        state.loadingList = 'pending'
+        state.error = null
+      })
+      .addCase(fetchProductList.fulfilled, (state, action) => {
+        state.loadingList = 'succeeded'
+        state.listProducts = action.payload.products
+        state.totalPages = action.payload.totalPages
+      })
+      .addCase(fetchProductList.rejected, (state, action) => {
+        state.loadingList = 'failed'
+        state.listProducts = []
+        state.totalPages = 1
+        state.error = (action.payload as string) || 'Could not load product list.'
       })
   }
 })

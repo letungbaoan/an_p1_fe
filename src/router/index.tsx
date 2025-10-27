@@ -8,6 +8,10 @@ import { ROUTES } from '@/constants/routes'
 import PublicRoute from '@/router/PublicRoute'
 import ContactPage from '@/pages/ContactPage'
 import CartDetails from '@/pages/CartDetails'
+import ProductsPage from '@/pages/ProductsPage'
+import PrivateRoute from '@/router/PrivateRoute'
+import MyAccountPage from '@/pages/user/MyAccountPage'
+import ProductDetailPage from '@/pages/ProductDetailPage'
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +24,23 @@ export const router = createBrowserRouter([
       },
       { path: ROUTES.CONTACT, element: <ContactPage /> },
       { path: ROUTES.CART, element: <CartDetails /> },
+      { path: ROUTES.PRODUCTS, element: <ProductsPage /> },
+      { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage /> },
       {
         element: <PublicRoute />,
         children: [
           {
             path: ROUTES.LOGIN,
             element: <AuthPage />
+          }
+        ]
+      },
+      {
+        element: <PrivateRoute />,
+        children: [
+          {
+            path: ROUTES.PROFILE,
+            element: <MyAccountPage />
           }
         ]
       },

@@ -7,7 +7,7 @@ export interface Product {
   stockQuantity: number
   discountPercentage: number
   rating: number
-  imageUrls: string
+  imageUrls: string[]
   dealEndTime: string
   inStock: boolean
   onSale: boolean

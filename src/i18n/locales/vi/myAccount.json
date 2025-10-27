@@ -1,0 +1,22 @@
+{
+  "tabs": {
+    "profile": "Hồ sơ",
+    "orderHistory": "Lịch sử đơn hàng"
+  },
+  "profileForm": {
+    "title": "Hồ sơ",
+    "username": "Tên người dùng",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "passwordHint": "Để ******** nếu không muốn đổi mật khẩu",
+    "saveButton": "Lưu",
+    "saving": "Đang lưu...",
+    "updating": "Đang cập nhật...",
+    "success": "Cập nhật hồ sơ thành công!",
+    "error": "Cập nhật thất bại với lỗi: {{error}}",
+    "error_username": "Tên người dùng phải có ít nhất 6 ký tự.",
+    "error_email": "Địa chỉ email không hợp lệ.",
+    "error_password": "Mật khẩu phải có ít nhất 6 ký tự."
+  },
+  "orderHistoryComingSoon": "Trang lịch sử đơn hàng sẽ sớm có..."
+}
