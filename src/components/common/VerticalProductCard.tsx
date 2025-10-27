@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Heart, Plus } from 'lucide-react'
 import type { Product } from '@/types/product'
 import ProductRating from '@/components/common/ProductRating'
 import SafeImage from '@/components/common/SafeImage'
+import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 interface ProductCardProps {
@@ -12,18 +14,22 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
-  const { t } = useTranslation('product')
+  const { t } = useTranslation(['product', 'toast'])
   const navigate = useNavigate()
+  const [liked, setLiked] = useState(false)
 
-  const discount = product.discountPercentage || 0
+  useEffect(() => {
+    setLiked(isInWishlist(product.id))
+  }, [product.id])
+
+  const discount = product.discountPercentage ?? 0
   const isDiscounted = discount > 0
 
-  const price = product.price || 0
+  const price = product.price ?? 0
   const originalPrice = isDiscounted ? price / (1 - discount / 100) : price
-
   const rating = product.rating ?? 0
   const reviewCount = product.reviewCount ?? 0
-  const name = product.name || t('no_name')
+  const name = product.name ?? t('no_name')
 
   const handleTitleClick = () => {
     navigate(`/products/${product.id}`)
@@ -31,10 +37,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+    toggleWishlist(product)
+    setLiked(!liked)
+    toast.success(!liked ? t('wishlist_add_success', { ns: 'toast' }) : t('wishlist_remove_success', { ns: 'toast' }))
   }
 
   const handleAddToCartClick = (e: React.MouseEvent) => {
     e.stopPropagation()
+    addToCart(product)
+    toast.success(t('add_to_cart_success', { ns: 'toast' }))
   }
 
   return (
@@ -52,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
           className='absolute right-2 top-2 z-10 rounded-full bg-white p-1.5 shadow-md transition hover:scale-110'
           onClick={handleFavoriteClick}
         >
-          <Heart className='text-gray-400 hover:text-red-500' size={16} />
+          <Heart className={`${liked ? 'text-red-500' : 'text-gray-400'}`} size={16} />
         </button>
 
         <SafeImage

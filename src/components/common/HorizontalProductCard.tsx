@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { type Product } from '@/types/product'
 import { Heart, Plus } from 'lucide-react'
 import ProductRating from '@/components/common/ProductRating'
@@ -6,23 +6,42 @@ import DealTimer from '@/components/common/DealTimer'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SafeImage from '@/components/common/SafeImage'
+import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
+import toast from 'react-hot-toast'
 
 interface HorizontalProductCardProps {
   product: Product
 }
 
 const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }) => {
-  const { t } = useTranslation('product')
-
+  const { t } = useTranslation(['product', 'toast'])
   const discountPercentage = product.discountPercentage || 0
   const price = product.price || 0
   const rating = product.rating ?? 0
   const reviewCount = product.reviewCount ?? 0
   const name = product.name || t('no_name')
   const dealEndTime = product.dealEndTime ?? null
+  const [liked, setLiked] = useState(false)
+
+  useEffect(() => {
+    setLiked(isInWishlist(product.id))
+  }, [product.id])
 
   const isDiscounted = discountPercentage > 0
   const originalPrice = isDiscounted ? price / (1 - discountPercentage / 100) : price
+
+  const handleAddToCartClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    addToCart(product)
+    toast.success(t('add_to_cart_success', { ns: 'toast' }))
+  }
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    toggleWishlist(product)
+    setLiked(!liked)
+    toast.success(!liked ? t('wishlist_add_success', { ns: 'toast' }) : t('wishlist_remove_success', { ns: 'toast' }))
+  }
 
   return (
     <div className='relative my-3 w-full max-w-4xl rounded-2xl border border-gray-200 bg-white p-4 transition duration-300 hover:shadow-lg'>
@@ -34,7 +53,10 @@ const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }
             </div>
           )}
 
-          <button className='absolute right-0 top-0 z-10 rounded-full bg-white p-1 shadow-md transition hover:scale-110'>
+          <button
+            onClick={handleFavoriteClick}
+            className='absolute right-0 top-0 z-10 rounded-full bg-white p-1 shadow-md transition hover:scale-110'
+          >
             <Heart size={16} className='text-gray-400 hover:text-red-500' />
           </button>
 
@@ -66,7 +88,10 @@ const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }
                 )}
               </div>
 
-              <button className='flex items-center space-x-1 self-center rounded-xl bg-purple-600 px-4 py-2 text-white transition hover:bg-purple-700'>
+              <button
+                className='flex items-center space-x-1 self-center rounded-xl bg-purple-600 px-4 py-2 text-white transition hover:bg-purple-700'
+                onClick={handleAddToCartClick}
+              >
                 <span className='text-base font-semibold'>{t('add_to_cart')}</span>
                 <Plus size={18} />
               </button>

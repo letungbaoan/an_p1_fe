@@ -13,3 +13,8 @@ export interface Product {
   onSale: boolean
   reviewCount: number
 }
+
+export interface CartItem {
+  product: Product
+  amount: number
+}
