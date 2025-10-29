@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Heart, Plus } from 'lucide-react'
 import type { Product } from '@/types/product'
 import ProductRating from '@/components/common/ProductRating'
@@ -15,7 +15,6 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
   const { t } = useTranslation(['product', 'toast'])
-  const navigate = useNavigate()
   const [liked, setLiked] = useState(false)
 
   useEffect(() => {
@@ -30,10 +29,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
   const rating = product.rating ?? 0
   const reviewCount = product.reviewCount ?? 0
   const name = product.name ?? t('no_name')
-
-  const handleTitleClick = () => {
-    navigate(`/products/${product.id}`)
-  }
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -76,12 +71,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
       <div className='p-2'>
         <ProductRating rating={rating} reviewCount={reviewCount} />
 
-        <h3
-          className='mb-1 line-clamp-1 cursor-pointer text-sm font-semibold text-gray-800 transition hover:text-purple-600'
-          onClick={handleTitleClick}
+        <Link
+          to={`/products/${product.id}`}
+          className='mb-1 line-clamp-1 text-sm font-semibold text-gray-800 transition hover:text-purple-600'
         >
           {name}
-        </h3>
+        </Link>
 
         <div className='mt-2 flex items-center justify-between'>
           <div className='flex flex-row items-center space-x-2'>

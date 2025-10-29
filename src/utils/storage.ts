@@ -13,14 +13,14 @@ export const getCart = (): { product: Product; amount: number }[] => {
   return data ? JSON.parse(data) : []
 }
 
-export const addToCart = (product: Product) => {
+export const addToCart = (product: Product, quantity: number = 1) => {
   const cart = getCart()
   const index = cart.findIndex((item) => item.product.id === product.id)
 
   if (index >= 0) {
-    cart[index].amount += 1
+    cart[index].amount += quantity
   } else {
-    cart.push({ product, amount: 1 })
+    cart.push({ product, amount: quantity })
   }
 
   localStorage.setItem(CART_KEY, JSON.stringify(cart))

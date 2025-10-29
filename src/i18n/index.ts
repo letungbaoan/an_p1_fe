@@ -27,6 +27,8 @@ import viContact from './locales/vi/contact.json'
 import enContact from './locales/en/contact.json'
 import viCart from './locales/vi/cart.json'
 import enCart from './locales/en/cart.json'
+import viMyAccount from './locales/vi/myAccount.json'
+import enMyAccount from './locales/en/myAccount.json'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -43,7 +45,8 @@ i18n.use(initReactI18next).init({
       toast: enToast,
       auth: enAuth,
       contact: enContact,
-      cart: enCart
+      cart: enCart,
+      myAccount: enMyAccount
     },
     vi: {
       header: viHeader,
@@ -58,7 +61,8 @@ i18n.use(initReactI18next).init({
       toast: viToast,
       auth: viAuth,
       contact: viContact,
-      cart: viCart
+      cart: viCart,
+      myAccount: viMyAccount
     }
   },
   lng: 'en',
@@ -76,7 +80,8 @@ i18n.use(initReactI18next).init({
     'toast',
     'auth',
     'contact',
-    'cart'
+    'cart',
+    'myAccount'
   ],
   defaultNS: 'common',
   interpolation: {

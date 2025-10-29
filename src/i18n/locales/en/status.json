@@ -5,5 +5,6 @@
   "no_banners": "No banners available at the moment.",
   "loading_banners": "Loading banners...",
   "error_fetch_banners": "Error: Unable to load banners ({{error}})",
-  "no_deals": "No deals available at the moment."
+  "no_deals": "No deals available at the moment.",
+  "loading_categories": "Loading categories ..."
 }

@@ -11,5 +11,9 @@
   "form_send_button": "Gửi Tin Nhắn",
   "office_us_title": "Văn Phòng Hoa Kỳ",
   "office_munich_title": "Văn Phòng Munich",
-  "follow_us": "Theo dõi chúng tôi"
+  "follow_us": "Theo dõi chúng tôi",
+  "error_name": "Tên không thể để trống",
+  "error_email": "Email không thể để trống",
+  "error_subject": "Tiêu đề không thể để trống",
+  "error_message": "Tin nhắn không thể để trống"
 }

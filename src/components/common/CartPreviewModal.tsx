@@ -46,7 +46,7 @@ const CartPreviewModal: React.FC<CartPreviewModalProps> = ({ cartItems = [], onR
               <div key={product?.id ?? index} className='flex items-center space-x-3'>
                 <SafeImage src={imageSrc} alt={name} className='size-12 rounded object-contain' />
                 <div className='grow'>
-                  <p className='truncate text-sm font-medium text-gray-800'>{name}</p>
+                  <p className='max-w-[180px] truncate text-sm font-medium text-gray-800'>{name}</p>
                   <p className='text-xs text-gray-500'>
                     {amount} x ${price.toFixed(2)}
                   </p>

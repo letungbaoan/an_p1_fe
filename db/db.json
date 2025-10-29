@@ -1,67 +1,58 @@
 {
   "categories": [
     {
-      "id": "1",
-      "image": "assets/home/list1.png",
+      "id": 1,
+      "image": "/assets/home/list1.png",
       "nameKey": "category.fruits_vegetables",
-      "slug": "fruits-vegetables",
-      "route": "/products?category_slug=fruits-vegetables"
+      "route": "/products?category_id=1"
     },
     {
-      "id": "2",
-      "image": "assets/home/list2.png",
+      "id": 2,
+      "image": "/assets/home/list2.png",
       "nameKey": "category.baby_pregnancy",
-      "slug": "baby-pregnancy",
-      "route": "/products?category_slug=baby-pregnancy"
+      "route": "/products?category_id=2"
     },
     {
-      "id": "3",
-      "image": "assets/home/list3.png",
+      "id": 3,
+      "image": "/assets/home/list3.png",
       "nameKey": "category.beverages",
-      "slug": "beverages",
-      "route": "/products?category_slug=beverages"
+      "route": "/products?category_id=3"
     },
     {
-      "id": "4",
-      "image": "assets/home/list4.png",
+      "id": 4,
+      "image": "/assets/home/list4.png",
       "nameKey": "category.meats_seafood",
-      "slug": "meats-seafood",
-      "route": "/products?category_slug=meats-seafood"
+      "route": "/products?category_id=4"
     },
     {
-      "id": "5",
-      "image": "assets/home/list5.png",
+      "id": 5,
+      "image": "/assets/home/list5.png",
       "nameKey": "category.biscuits_snacks",
-      "slug": "biscuits-snacks",
-      "route": "/products?category_slug=biscuits-snacks"
+      "route": "/products?category_id=5"
     },
     {
-      "id": "6",
-      "image": "assets/home/list6.png",
+      "id": 6,
+      "image": "/assets/home/list6.png",
       "nameKey": "category.breads_bakery",
-      "slug": "breads-bakery",
-      "route": "/products?category_slug=breads-bakery"
+      "route": "/products?category_id=6"
     },
     {
-      "id": "7",
-      "image": "assets/home/list7.png",
+      "id": 7,
+      "image": "/assets/home/list7.png",
       "nameKey": "category.breakfast_dairy",
-      "slug": "breakfast-dairy",
-      "route": "/products?category_slug=breakfast-dairy"
+      "route": "/products?category_id=7"
     },
     {
-      "id": "8",
-      "image": "assets/home/list8.png",
+      "id": 8,
+      "image": "/assets/home/list8.png",
       "nameKey": "category.frozen_foods",
-      "slug": "frozen-foods",
-      "route": "/products?category_slug=frozen-foods"
+      "route": "/products?category_id=8"
     },
     {
-      "id": "9",
-      "image": "assets/home/list9.png",
+      "id": 9,
+      "image": "/assets/home/list9.png",
       "nameKey": "category.grocery_staples",
-      "slug": "grocery-staples",
-      "route": "/products?category_slug=grocery-staples"
+      "route": "/products?category_id=9"
     }
   ],
   "users": [
@@ -73,38 +64,17 @@
       "role": "admin"
     },
     {
-      "id": "1761115369131",
-      "username": "123456",
-      "email": "baoan7604@gmail.com",
-      "password": "123456",
-      "role": "user"
-    },
-    {
-      "id": "1761117374143",
-      "username": "baoan7604@gmail.com",
-      "email": "baoan7604@gmail.com",
-      "password": "123456",
-      "role": "user"
-    },
-    {
-      "id": "1761117379734",
-      "username": "baoan7604@gmail.com",
-      "email": "baoan7604@gmail.com",
-      "password": "123456",
-      "role": "user"
-    },
-    {
       "id": 1761295827638,
       "username": "baoan7604@gmail.com",
       "email": "baoan7604@gmail.com",
-      "password": "123456",
-      "role": "user"
+      "role": "user",
+      "password": "123456"
     },
     {
-      "id": 1761296390126,
-      "username": "baoan7604@gmail.com",
-      "email": "baoan7604@gmail.com",
-      "password": "123456",
+      "username": "baoan7604@gmail.commmm",
+      "email": "baoan7604@gmail.comm",
+      "password": "1234567",
+      "id": 1761535328751,
       "role": "user"
     }
   ],
@@ -119,7 +89,7 @@
   "banners": [
     {
       "id": "1",
-      "backgroundImageSrc": "assets/home/tabpannel_1.png",
+      "backgroundImageSrc": "/assets/home/tabpannel_1.png",
       "tagKey": "banner_slides.slide_1.tag",
       "titleKey": "banner_slides.slide_1.title",
       "descriptionKey": "banner_slides.slide_1.description",
@@ -129,7 +99,7 @@
     },
     {
       "id": "2",
-      "backgroundImageSrc": "assets/home/tabpannel_2.png",
+      "backgroundImageSrc": "/assets/home/tabpannel_2.png",
       "tagKey": "banner_slides.slide_2.tag",
       "titleKey": "banner_slides.slide_2.title",
       "descriptionKey": "banner_slides.slide_2.description",
@@ -200,6 +170,44 @@
       "imgUrl": "/assets/banner/promotion_10.png"
     }
   ],
+  "reviews": [
+    {
+      "id": 101,
+      "product_id": 1,
+      "userId": 1001,
+      "rating": 5,
+      "comment": "The Organic Beef Steak was incredibly tender and flavorful. Worth the premium price!",
+      "date": "2025-10-25T10:00:00Z",
+      "username": "AnBaoUser"
+    },
+    {
+      "id": 1761536042642,
+      "product_id": "6",
+      "userId": 1761295827638,
+      "username": "baoan7604@gmail.comm",
+      "date": "2025-10-27T03:34:02.642Z",
+      "rating": 3,
+      "comment": "aaadfasdfasdf"
+    },
+    {
+      "id": 1761536315853,
+      "product_id": "9",
+      "userId": 1761295827638,
+      "username": "baoan7604@gmail.comm",
+      "date": "2025-10-27T03:38:35.853Z",
+      "rating": 3,
+      "comment": "Nice producttttt"
+    },
+    {
+      "id": 1761566921653,
+      "product_id": "1",
+      "userId": 1761295827638,
+      "username": "baoan7604@gmail.com",
+      "date": "2025-10-27T12:08:41.653Z",
+      "rating": 3,
+      "comment": "adfasdfsadfsda"
+    }
+  ],
   "products": [
     {
       "id": "1",
@@ -212,9 +220,9 @@
       "rating": 3.5,
       "reviewCount": 145,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-05T12:00:00Z",
       "inStock": true,
@@ -231,9 +239,9 @@
       "rating": 4.7,
       "reviewCount": 98,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-10T10:00:00Z",
       "inStock": true,
@@ -244,12 +252,14 @@
       "name": "Fresh Pork Loin (2kg)",
       "price": 18,
       "description": "Clean, safe, high-quality pork. Ideal for roasting and large meals.",
+      "category_id": 1,
       "rating": 4.5,
       "reviewCount": 55,
+      "discountPercentage": 10,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-01T15:30:00Z",
       "inStock": true,
@@ -266,9 +276,9 @@
       "rating": 4.9,
       "reviewCount": 210,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-10-28T09:00:00Z",
       "inStock": true,
@@ -285,9 +295,9 @@
       "rating": 4.6,
       "reviewCount": 72,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-03T18:00:00Z",
       "inStock": true,
@@ -304,9 +314,9 @@
       "rating": 4.7,
       "reviewCount": 112,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-08T14:00:00Z",
       "inStock": true,
@@ -323,9 +333,9 @@
       "rating": 4.9,
       "reviewCount": 180,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-15T11:30:00Z",
       "inStock": true,
@@ -342,9 +352,9 @@
       "rating": 4.4,
       "reviewCount": 41,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-10-25T16:00:00Z",
       "inStock": true,
@@ -361,9 +371,9 @@
       "rating": 4.6,
       "reviewCount": 88,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-06T13:00:00Z",
       "inStock": true,
@@ -380,9 +390,9 @@
       "rating": 4.3,
       "reviewCount": 32,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-02T17:30:00Z",
       "inStock": true,
@@ -399,9 +409,9 @@
       "rating": 4.5,
       "reviewCount": 65,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-07T08:00:00Z",
       "inStock": true,
@@ -418,9 +428,9 @@
       "rating": 5,
       "reviewCount": 240,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-10-30T20:00:00Z",
       "inStock": true,
@@ -437,9 +447,9 @@
       "rating": 4.8,
       "reviewCount": 160,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-12T10:30:00Z",
       "inStock": true,
@@ -456,9 +466,9 @@
       "rating": 4.5,
       "reviewCount": 50,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-04T19:00:00Z",
       "inStock": true,
@@ -475,9 +485,9 @@
       "rating": 4.4,
       "reviewCount": 78,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-09T14:30:00Z",
       "inStock": true,
@@ -494,9 +504,9 @@
       "rating": 4.7,
       "reviewCount": 105,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-11T16:00:00Z",
       "inStock": true,
@@ -513,9 +523,9 @@
       "rating": 4.3,
       "reviewCount": 90,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-13T11:00:00Z",
       "inStock": true,
@@ -532,9 +542,9 @@
       "rating": 4.6,
       "reviewCount": 61,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-10-27T17:00:00Z",
       "inStock": true,
@@ -551,9 +561,9 @@
       "rating": 4.8,
       "reviewCount": 130,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-11-14T13:30:00Z",
       "inStock": true,
@@ -570,11 +580,771 @@
       "rating": 4.4,
       "reviewCount": 48,
       "imageUrls": [
-        "assets/item/item_1.png",
-        "assets/item/item_2.png",
-        "assets/item/item_3.png"
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
       ],
       "dealEndTime": "2025-10-29T09:30:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "21",
+      "name": "Baby Stroller Deluxe",
+      "price": 75.99,
+      "description": "Comfortable and safe stroller for infants.",
+      "category_id": 2,
+      "stockQuantity": 25,
+      "discountPercentage": 10,
+      "rating": 4.6,
+      "reviewCount": 30,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "22",
+      "name": "Organic Baby Milk Powder",
+      "price": 35.5,
+      "description": "High-quality organic milk powder suitable for babies.",
+      "category_id": 2,
+      "stockQuantity": 50,
+      "discountPercentage": 15,
+      "rating": 4.8,
+      "reviewCount": 45,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "23",
+      "name": "Baby Diapers Pack",
+      "price": 20,
+      "description": "Soft and absorbent diapers for daily use.",
+      "category_id": 2,
+      "stockQuantity": 80,
+      "discountPercentage": 12,
+      "rating": 4.5,
+      "reviewCount": 60,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "24",
+      "name": "Baby Feeding Bottle Set",
+      "price": 15.99,
+      "description": "BPA-free feeding bottles with anti-colic design.",
+      "category_id": 2,
+      "stockQuantity": 60,
+      "discountPercentage": 8,
+      "rating": 4.7,
+      "reviewCount": 40,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "25",
+      "name": "Baby Soft Blanket",
+      "price": 12.5,
+      "description": "Warm and soft blanket for newborns.",
+      "category_id": 2,
+      "stockQuantity": 70,
+      "discountPercentage": 5,
+      "rating": 4.9,
+      "reviewCount": 25,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "26",
+      "name": "Organic Green Tea Pack",
+      "price": 10.99,
+      "description": "Refreshing green tea with natural antioxidants.",
+      "category_id": 3,
+      "stockQuantity": 50,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 60,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "27",
+      "name": "Premium Coffee Beans",
+      "price": 15.5,
+      "description": "Aromatic coffee beans, perfect for espresso or drip coffee.",
+      "category_id": 3,
+      "stockQuantity": 40,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 75,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "28",
+      "name": "Fresh Orange Juice",
+      "price": 6.99,
+      "description": "Cold-pressed orange juice, 100% natural.",
+      "category_id": 3,
+      "stockQuantity": 60,
+      "discountPercentage": 8,
+      "rating": 4.6,
+      "reviewCount": 55,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "29",
+      "name": "Sparkling Mineral Water",
+      "price": 4.5,
+      "description": "Refreshing carbonated water, no sugar added.",
+      "category_id": 3,
+      "stockQuantity": 100,
+      "discountPercentage": 5,
+      "rating": 4.4,
+      "reviewCount": 35,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "30",
+      "name": "Herbal Infusion Tea",
+      "price": 7.25,
+      "description": "Soothing herbal tea blend with natural ingredients.",
+      "category_id": 3,
+      "stockQuantity": 55,
+      "discountPercentage": 10,
+      "rating": 4.7,
+      "reviewCount": 42,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "31",
+      "name": "Fresh Tuna Steak",
+      "price": 20.99,
+      "description": "Sushi-grade tuna, firm texture, perfect for grilling.",
+      "category_id": 4,
+      "stockQuantity": 40,
+      "discountPercentage": 10,
+      "rating": 4.8,
+      "reviewCount": 50,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "32",
+      "name": "Wild Salmon Fillet",
+      "price": 18.5,
+      "description": "Fresh wild-caught salmon, rich in Omega-3.",
+      "category_id": 4,
+      "stockQuantity": 30,
+      "discountPercentage": 12,
+      "rating": 4.7,
+      "reviewCount": 42,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "33",
+      "name": "Lamb Chops",
+      "price": 25,
+      "description": "Premium lamb chops, tender and juicy, ideal for roasting.",
+      "category_id": 4,
+      "stockQuantity": 25,
+      "discountPercentage": 15,
+      "rating": 4.9,
+      "reviewCount": 35,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "34",
+      "name": "Sea Scallops",
+      "price": 22.5,
+      "description": "Fresh sea scallops, perfect for sauté or grilling.",
+      "category_id": 4,
+      "stockQuantity": 50,
+      "discountPercentage": 8,
+      "rating": 4.6,
+      "reviewCount": 28,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "35",
+      "name": "Smoked Trout",
+      "price": 16.99,
+      "description": "Delicately smoked trout, ready to serve.",
+      "category_id": 4,
+      "stockQuantity": 35,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 22,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "36",
+      "name": "Chocolate Chip Cookies",
+      "price": 5.5,
+      "description": "Crunchy cookies with real chocolate chips.",
+      "category_id": 5,
+      "stockQuantity": 100,
+      "discountPercentage": 10,
+      "rating": 4.7,
+      "reviewCount": 80,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "37",
+      "name": "Salted Potato Chips",
+      "price": 3.99,
+      "description": "Crispy potato chips, lightly salted.",
+      "category_id": 5,
+      "stockQuantity": 150,
+      "discountPercentage": 5,
+      "rating": 4.5,
+      "reviewCount": 60,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "38",
+      "name": "Mixed Nuts Pack",
+      "price": 7.25,
+      "description": "Healthy snack with almonds, cashews, and walnuts.",
+      "category_id": 5,
+      "stockQuantity": 80,
+      "discountPercentage": 12,
+      "rating": 4.6,
+      "reviewCount": 50,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "39",
+      "name": "Cheese Crackers",
+      "price": 4.5,
+      "description": "Savory crackers with rich cheese flavor.",
+      "category_id": 5,
+      "stockQuantity": 90,
+      "discountPercentage": 8,
+      "rating": 4.4,
+      "reviewCount": 45,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "40",
+      "name": "Granola Bars",
+      "price": 6,
+      "description": "Nutritious granola bars, perfect for on-the-go.",
+      "category_id": 5,
+      "stockQuantity": 70,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 38,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "41",
+      "name": "Whole Wheat Bread",
+      "price": 4.5,
+      "description": "Freshly baked whole wheat bread loaf.",
+      "category_id": 6,
+      "stockQuantity": 80,
+      "discountPercentage": 5,
+      "rating": 4.6,
+      "reviewCount": 40,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "42",
+      "name": "Croissant Butter",
+      "price": 3.99,
+      "description": "Flaky buttery croissants, perfect for breakfast.",
+      "category_id": 6,
+      "stockQuantity": 60,
+      "discountPercentage": 8,
+      "rating": 4.7,
+      "reviewCount": 35,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "43",
+      "name": "Multigrain Rolls",
+      "price": 5,
+      "description": "Healthy multigrain rolls, soft and fresh.",
+      "category_id": 6,
+      "stockQuantity": 50,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 30,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "44",
+      "name": "Banana Bread Loaf",
+      "price": 6.25,
+      "description": "Moist banana bread with real banana pieces.",
+      "category_id": 6,
+      "stockQuantity": 40,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 28,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "45",
+      "name": "Sourdough Loaf",
+      "price": 7,
+      "description": "Tangy sourdough bread, handmade and fresh.",
+      "category_id": 6,
+      "stockQuantity": 35,
+      "discountPercentage": 10,
+      "rating": 4.7,
+      "reviewCount": 22,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "46",
+      "name": "Greek Yogurt Pack",
+      "price": 5.5,
+      "description": "High-protein yogurt, creamy and fresh.",
+      "category_id": 7,
+      "stockQuantity": 80,
+      "discountPercentage": 10,
+      "rating": 4.8,
+      "reviewCount": 45,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "47",
+      "name": "Cheddar Cheese Block",
+      "price": 6.99,
+      "description": "Rich-flavored cheddar cheese, ideal for sandwiches.",
+      "category_id": 7,
+      "stockQuantity": 70,
+      "discountPercentage": 12,
+      "rating": 4.7,
+      "reviewCount": 40,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "48",
+      "name": "Almond Milk Pack",
+      "price": 4.5,
+      "description": "Unsweetened almond milk, dairy-free and nutritious.",
+      "category_id": 7,
+      "stockQuantity": 60,
+      "discountPercentage": 8,
+      "rating": 4.6,
+      "reviewCount": 35,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "49",
+      "name": "Butter Unsalted",
+      "price": 3.75,
+      "description": "Creamy unsalted butter, perfect for baking and cooking.",
+      "category_id": 7,
+      "stockQuantity": 90,
+      "discountPercentage": 5,
+      "rating": 4.7,
+      "reviewCount": 32,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "50",
+      "name": "Breakfast Cereal Box",
+      "price": 4.99,
+      "description": "Whole grain breakfast cereal, enriched with vitamins.",
+      "category_id": 7,
+      "stockQuantity": 100,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 28,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "51",
+      "name": "Frozen Mixed Vegetables",
+      "price": 6.5,
+      "description": "Assorted frozen vegetables, ready for cooking.",
+      "category_id": 8,
+      "stockQuantity": 90,
+      "discountPercentage": 8,
+      "rating": 4.6,
+      "reviewCount": 40,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "52",
+      "name": "Frozen Berry Mix",
+      "price": 7.99,
+      "description": "Mixed frozen berries, perfect for smoothies.",
+      "category_id": 8,
+      "stockQuantity": 80,
+      "discountPercentage": 10,
+      "rating": 4.7,
+      "reviewCount": 38,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "53",
+      "name": "Frozen Pizza",
+      "price": 8.5,
+      "description": "Ready-to-bake frozen pizza with cheese and toppings.",
+      "category_id": 8,
+      "stockQuantity": 70,
+      "discountPercentage": 12,
+      "rating": 4.5,
+      "reviewCount": 42,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "54",
+      "name": "Frozen Shrimp",
+      "price": 14.99,
+      "description": "Cleaned frozen shrimp, ready for cooking.",
+      "category_id": 8,
+      "stockQuantity": 50,
+      "discountPercentage": 15,
+      "rating": 4.8,
+      "reviewCount": 28,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "55",
+      "name": "Frozen Spinach Pack",
+      "price": 5.99,
+      "description": "Frozen spinach, convenient and fresh.",
+      "category_id": 8,
+      "stockQuantity": 60,
+      "discountPercentage": 10,
+      "rating": 4.5,
+      "reviewCount": 25,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "56",
+      "name": "White Rice Bag 5kg",
+      "price": 12.99,
+      "description": "Premium long-grain rice, ideal for daily meals.",
+      "category_id": 9,
+      "stockQuantity": 100,
+      "discountPercentage": 10,
+      "rating": 4.7,
+      "reviewCount": 60,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-05T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "57",
+      "name": "All-Purpose Flour",
+      "price": 4.5,
+      "description": "Versatile flour, perfect for baking and cooking.",
+      "category_id": 9,
+      "stockQuantity": 80,
+      "discountPercentage": 5,
+      "rating": 4.5,
+      "reviewCount": 40,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-06T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "58",
+      "name": "Olive Oil Bottle",
+      "price": 9.99,
+      "description": "Extra virgin olive oil, perfect for salads and cooking.",
+      "category_id": 9,
+      "stockQuantity": 60,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 35,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-07T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "59",
+      "name": "Sugar White Pack",
+      "price": 3.5,
+      "description": "Refined white sugar, suitable for all purposes.",
+      "category_id": 9,
+      "stockQuantity": 120,
+      "discountPercentage": 8,
+      "rating": 4.4,
+      "reviewCount": 50,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-08T12:00:00Z",
+      "inStock": true,
+      "onSale": true
+    },
+    {
+      "id": "60",
+      "name": "Salt Iodized Pack",
+      "price": 2.99,
+      "description": "Iodized salt for everyday cooking.",
+      "category_id": 9,
+      "stockQuantity": 150,
+      "discountPercentage": 5,
+      "rating": 4.5,
+      "reviewCount": 30,
+      "imageUrls": [
+        "/assets/item/item_1.png",
+        "/assets/item/item_2.png",
+        "/assets/item/item_3.png"
+      ],
+      "dealEndTime": "2025-11-09T12:00:00Z",
       "inStock": true,
       "onSale": true
     }

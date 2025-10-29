@@ -11,5 +11,9 @@
     "form_send_button": "Send Message",
     "office_us_title": "United States Office",
     "office_munich_title": "Munich States Office",
-    "follow_us": "Follow us"
+    "follow_us": "Follow us",
+    "error_name": "Name can not be blank",
+    "error_email": "Email can not be blank",
+    "error_subject": "Subject can not be blank",
+    "error_message": "Message can not be blank"
 }

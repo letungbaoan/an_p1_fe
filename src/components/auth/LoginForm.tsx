@@ -1,27 +1,30 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type LoginFormData } from '@/pages/AuthPage'
+import InputField from '@/components/common/InputField'
+import { ERROR_KEYS } from '@/constants/errorKeys'
 
 interface LoginFormProps {
   onSubmit: (data: LoginFormData) => void
   isLoading: boolean
 }
 
+type ErrorKey = (typeof ERROR_KEYS)[keyof typeof ERROR_KEYS]
+
 export default function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
   const { t } = useTranslation('auth')
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [errors, setErrors] = useState<Record<ErrorKey, string>>({} as Record<ErrorKey, string>)
 
   async function handleAction(formData: FormData) {
     const usernameOrEmail = formData.get('usernameOrEmail')?.toString().trim() || ''
     const password = formData.get('password')?.toString() || ''
 
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<ErrorKey, string> = {} as Record<ErrorKey, string>
 
-    if (!usernameOrEmail) newErrors.usernameOrEmail = t('error_username_or_email')
-    if (!password || password.length < 6) newErrors.password = t('error_password')
+    if (!usernameOrEmail) newErrors[ERROR_KEYS.USERNAME_OR_EMAIL] = t('error_username_or_email')
+    if (!password || password.length < 6) newErrors[ERROR_KEYS.PASSWORD] = t('error_password')
 
     setErrors(newErrors)
-
     if (Object.keys(newErrors).length > 0) return
 
     onSubmit({ usernameOrEmail, password })
@@ -31,29 +34,21 @@ export default function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
     <form action={handleAction} className='space-y-4'>
       <p className='text-center text-sm text-gray-500'>{t('login_description')}</p>
 
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>{t('username_or_email_label')}</label>
-        <input
-          name='usernameOrEmail'
-          type='text'
-          className={`mt-1 w-full rounded-md border p-2 focus:outline-none ${
-            errors.usernameOrEmail ? 'border-red-500' : 'border-gray-300 focus:border-purple-500'
-          }`}
-        />
-        {errors.usernameOrEmail && <p className='mt-1 text-sm text-red-500'>{errors.usernameOrEmail}</p>}
-      </div>
+      <InputField
+        label={t('username_or_email_label')}
+        name='usernameOrEmail'
+        type='text'
+        error={errors[ERROR_KEYS.USERNAME_OR_EMAIL]}
+        disabled={isLoading}
+      />
 
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>{t('password_label')}</label>
-        <input
-          name='password'
-          type='password'
-          className={`mt-1 w-full rounded-md border p-2 focus:outline-none ${
-            errors.password ? 'border-red-500' : 'border-gray-300 focus:border-purple-500'
-          }`}
-        />
-        {errors.password && <p className='mt-1 text-sm text-red-500'>{errors.password}</p>}
-      </div>
+      <InputField
+        label={t('password_label')}
+        name='password'
+        type='password'
+        error={errors[ERROR_KEYS.PASSWORD]}
+        disabled={isLoading}
+      />
 
       <div className='flex items-center justify-between text-sm'>
         <label className='flex items-center'>

@@ -12,6 +12,12 @@ interface AuthState {
   error: string | null
 }
 
+export interface UpdatePayload extends Partial<User> {
+  password?: string
+  username?: string
+  email?: string
+}
+
 const savedUser = localStorage.getItem('user')
 const savedLogin = localStorage.getItem('isLoggedIn')
 
@@ -73,6 +79,30 @@ export const registerUser = createAsyncThunk<User, RegisterFormData>(
   }
 )
 
+export const updateUser = createAsyncThunk<User, UpdatePayload>(
+  'auth/updateUser',
+  async (updatedData, { getState, rejectWithValue }) => {
+    try {
+      const state = getState() as { auth: AuthState }
+      const currentUser = state.auth.user
+      if (!currentUser) return rejectWithValue('No logged-in user.')
+
+      const payload: Partial<UserData> = {
+        username: updatedData.username,
+        email: updatedData.email,
+        ...(updatedData.password && updatedData.password !== '********' && { password: updatedData.password })
+      }
+      const response = await api.patch<UserData>(`${API_ENDPOINTS.USERS}/${currentUser.id}`, payload)
+
+      const { password: _, ...userToStore } = response.data
+      return userToStore as User
+    } catch (error) {
+      console.log(error)
+      return rejectWithValue('Update failed due to network or server issue.')
+    }
+  }
+)
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -102,7 +132,6 @@ export const authSlice = createSlice({
         state.user = action.payload
         state.isLoggedIn = true
 
-        // ✅ Lưu vào localStorage
         localStorage.setItem('user', JSON.stringify(action.payload))
         localStorage.setItem('isLoggedIn', 'true')
       })
@@ -123,7 +152,6 @@ export const authSlice = createSlice({
         state.user = action.payload
         state.isLoggedIn = true
 
-        // ✅ Lưu vào localStorage
         localStorage.setItem('user', JSON.stringify(action.payload))
         localStorage.setItem('isLoggedIn', 'true')
       })
@@ -132,6 +160,20 @@ export const authSlice = createSlice({
         state.loading = 'failed'
         state.error = (action.payload as string) || 'Registration failed.'
         state.isLoggedIn = false
+      })
+
+      .addCase(updateUser.pending, (state) => {
+        state.loading = 'pending'
+        state.error = null
+      })
+      .addCase(updateUser.fulfilled, (state, action: PayloadAction<User>) => {
+        state.loading = 'succeeded'
+        state.user = action.payload
+        localStorage.setItem('user', JSON.stringify(action.payload))
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.loading = 'failed'
+        state.error = (action.payload as string) || 'Update failed.'
       })
   }
 })

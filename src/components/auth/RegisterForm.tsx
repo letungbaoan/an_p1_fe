@@ -3,33 +3,38 @@ import { useState } from 'react'
 import { type RegisterFormData } from '@/pages/AuthPage'
 import { ROUTES } from '@/constants/routes'
 import { Link } from 'react-router-dom'
+import InputField from '@/components/common/InputField'
+import { ERROR_KEYS } from '@/constants/errorKeys'
 
 interface RegisterFormProps {
   onSubmit: (data: RegisterFormData) => void
   isLoading: boolean
 }
 
+// 🔹 Kiểu dữ liệu cho key lỗi (liên kết trực tiếp với ERROR_KEYS)
+type ErrorKey = (typeof ERROR_KEYS)[keyof typeof ERROR_KEYS]
+
 export default function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
   const { t } = useTranslation('auth')
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [errors, setErrors] = useState<Record<ErrorKey, string>>({} as Record<ErrorKey, string>)
 
   async function handleAction(formData: FormData) {
     const username = formData.get('username')?.toString().trim() || ''
     const email = formData.get('email')?.toString().trim() || ''
     const password = formData.get('password')?.toString() || ''
 
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<ErrorKey, string> = {} as Record<ErrorKey, string>
 
-    if (!username || username.length < 6) newErrors.username = t('error_username')
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = t('error_email')
-    if (!password || password.length < 6) newErrors.password = t('error_password')
+    if (!username || username.length < 6) newErrors[ERROR_KEYS.USERNAME] = t('error_username')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors[ERROR_KEYS.EMAIL] = t('error_email')
+    if (!password || password.length < 6) newErrors[ERROR_KEYS.PASSWORD] = t('error_password')
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
     }
 
-    setErrors({})
+    setErrors({} as Record<ErrorKey, string>)
     onSubmit({ username, email, password })
   }
 
@@ -37,41 +42,29 @@ export default function RegisterForm({ onSubmit, isLoading }: RegisterFormProps)
     <form action={handleAction} className='space-y-4'>
       <p className='text-center text-sm text-gray-500'>{t('register_description')}</p>
 
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>{t('username_label')}</label>
-        <input
-          name='username'
-          type='text'
-          className={`mt-1 w-full rounded-md border p-2 focus:outline-none ${
-            errors.username ? 'border-red-500' : 'border-gray-300 focus:border-purple-500'
-          }`}
-        />
-        {errors.username && <p className='text-sm text-red-500'>{errors.username}</p>}
-      </div>
+      <InputField
+        label={t('username_label')}
+        name='username'
+        type='text'
+        error={errors[ERROR_KEYS.USERNAME]}
+        disabled={isLoading}
+      />
 
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>{t('email_label')}</label>
-        <input
-          name='email'
-          type='email'
-          className={`mt-1 w-full rounded-md border p-2 focus:outline-none ${
-            errors.email ? 'border-red-500' : 'border-gray-300 focus:border-purple-500'
-          }`}
-        />
-        {errors.email && <p className='text-sm text-red-500'>{errors.email}</p>}
-      </div>
+      <InputField
+        label={t('email_label')}
+        name='email'
+        type='email'
+        error={errors[ERROR_KEYS.EMAIL]}
+        disabled={isLoading}
+      />
 
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>{t('password_label')}</label>
-        <input
-          name='password'
-          type='password'
-          className={`mt-1 w-full rounded-md border p-2 focus:outline-none ${
-            errors.password ? 'border-red-500' : 'border-gray-300 focus:border-purple-500'
-          }`}
-        />
-        {errors.password && <p className='text-sm text-red-500'>{errors.password}</p>}
-      </div>
+      <InputField
+        label={t('password_label')}
+        name='password'
+        type='password'
+        error={errors[ERROR_KEYS.PASSWORD]}
+        disabled={isLoading}
+      />
 
       <p className='text-xs text-gray-500'>
         {t('privacy_notice')}{' '}
