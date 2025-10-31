@@ -2,5 +2,6 @@
   "loading": "Đang tải dữ liệu ...",
   "retry": "Thử lại",
   "shop_now": "Mua ngay",
-  "error_loading_data": "Lỗi khi tải dữ liệu: {{error}}"
+  "error_loading_data": "Lỗi khi tải dữ liệu: {{error}}",
+  "please_login_first": "Vui lòng đăng nhập để tiếp tục"
 }

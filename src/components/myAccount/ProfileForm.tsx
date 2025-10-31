@@ -2,13 +2,10 @@ import InputField from '@/components/common/InputField'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/redux/hooks'
 import { updateUser } from '@/redux/slices/authSlice'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import toast from 'react-hot-toast'
 import { type RootState } from '@/redux/store'
-import { ERROR_KEYS } from '@/constants/errorKeys'
-
-type ErrorKey = (typeof ERROR_KEYS)[keyof typeof ERROR_KEYS]
+import { useProfileValidation } from '@/hooks/useProfileValidation'
 
 export default function ProfileForm() {
   const user = useSelector((state: RootState) => state.auth.user)
@@ -17,30 +14,26 @@ export default function ProfileForm() {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('myAccount')
 
-  const [errors, setErrors] = useState<Record<ErrorKey, string>>({} as Record<ErrorKey, string>)
+  const { errors, validate, setErrors } = useProfileValidation(t)
 
   async function handleAction(formData: FormData) {
     if (loading === 'pending') return
 
-    const username = formData.get('username')?.toString().trim() || ''
-    const email = formData.get('email')?.toString().trim() || ''
-    const password = formData.get('password')?.toString() || ''
-
-    const newErrors: Record<ErrorKey, string> = {} as Record<ErrorKey, string>
-
-    if (!username || username.length < 6) newErrors[ERROR_KEYS.USERNAME] = t('profileForm.error_username')
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors[ERROR_KEYS.EMAIL] = t('profileForm.error_email')
-    if (password && password !== '********' && password.length < 6)
-      newErrors[ERROR_KEYS.PASSWORD] = t('profileForm.error_password')
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-      return
+    const data = {
+      username: formData.get('username')?.toString().trim() || '',
+      email: formData.get('email')?.toString().trim() || '',
+      password: formData.get('password')?.toString() || ''
     }
 
-    setErrors({} as Record<ErrorKey, string>)
-    const updatedData: { username: string; email: string; password?: string } = { username, email }
-    if (password && password !== '********') updatedData.password = password
+    const newErrors = validate(data)
+    if (Object.keys(newErrors).length > 0) return
+
+    setErrors({})
+    const updatedData: { username: string; email: string; password?: string } = {
+      username: data.username,
+      email: data.email
+    }
+    if (data.password && data.password !== '********') updatedData.password = data.password
 
     await dispatch(updateUser(updatedData))
       .unwrap()
@@ -59,7 +52,7 @@ export default function ProfileForm() {
         label={t('profileForm.username')}
         name='username'
         defaultValue={user?.username || ''}
-        error={errors[ERROR_KEYS.USERNAME]}
+        error={errors.username}
         disabled={loading === 'pending'}
       />
 
@@ -68,7 +61,7 @@ export default function ProfileForm() {
         name='email'
         type='email'
         defaultValue={user?.email || ''}
-        error={errors[ERROR_KEYS.EMAIL]}
+        error={errors.email}
         disabled={loading === 'pending'}
       />
 
@@ -78,7 +71,7 @@ export default function ProfileForm() {
         type='password'
         placeholder='********'
         hint={t('profileForm.passwordHint')}
-        error={errors[ERROR_KEYS.PASSWORD]}
+        error={errors.password}
         disabled={loading === 'pending'}
       />
 

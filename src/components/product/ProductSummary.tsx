@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { type Product } from '@/types/product'
 import ProductRating from '@/components/common/ProductRating'
 import DealTimer from '@/components/common/DealTimer'
-import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
+import { addToCart, toggleWishlist, isInWishlist, addCheckoutItems } from '@/utils/storage'
 import toast from 'react-hot-toast'
+import { ROUTES } from '@/constants/routes'
+import { useNavigate } from 'react-router-dom'
 
 interface ProductSummaryProps {
   product: Product
@@ -16,6 +18,7 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({ product }) => {
   const [liked, setLiked] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [selectedImage, setSelectedImage] = useState<string>('')
+  const navigate = useNavigate()
 
   const { name, price, description, discountPercentage, rating, reviewCount, imageUrls, dealEndTime, stockQuantity } =
     product
@@ -40,8 +43,8 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({ product }) => {
   }
 
   const handleBuyNow = () => {
-    addToCart(product, quantity)
-    toast.success(t('add_to_cart_success', { ns: 'toast' }))
+    addCheckoutItems('buy-now', product, quantity)
+    navigate(ROUTES.CHECKOUT)
   }
 
   return (

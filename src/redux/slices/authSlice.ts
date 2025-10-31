@@ -97,7 +97,6 @@ export const updateUser = createAsyncThunk<User, UpdatePayload>(
       const { password: _, ...userToStore } = response.data
       return userToStore as User
     } catch (error) {
-      console.log(error)
       return rejectWithValue('Update failed due to network or server issue.')
     }
   }

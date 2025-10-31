@@ -12,6 +12,7 @@ import ProductsPage from '@/pages/ProductsPage'
 import PrivateRoute from '@/router/PrivateRoute'
 import MyAccountPage from '@/pages/user/MyAccountPage'
 import ProductDetailPage from '@/pages/ProductDetailPage'
+import CheckoutPage from '@/pages/user/CheckoutPage'
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.PROFILE,
             element: <MyAccountPage />
+          },
+          {
+            path: ROUTES.CHECKOUT,
+            element: <CheckoutPage />
           }
         ]
       },

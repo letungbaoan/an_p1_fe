@@ -7,5 +7,9 @@ export const ERROR_KEYS = {
   USERNAME_OR_EMAIL: 'usernameOrEmail',
   NAME: 'name',
   SUBJECT: 'subject',
-  MESSAGE: 'message'
+  MESSAGE: 'message',
+  ADDRESS: 'address',
+  ORDER_NOTES: 'orderNotes',
+  PHONE: 'phone',
+  FULL_NAME: 'fullName'
 } as const
