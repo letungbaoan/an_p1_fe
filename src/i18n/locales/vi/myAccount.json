@@ -18,5 +18,26 @@
     "error_email": "Địa chỉ email không hợp lệ.",
     "error_password": "Mật khẩu phải có ít nhất 6 ký tự."
   },
-  "orderHistoryComingSoon": "Trang lịch sử đơn hàng sẽ sớm có..."
+  "orderHistoryComingSoon": "Trang lịch sử đơn hàng sẽ sớm có...",
+  "loading_orders": "Đang tải lịch sử đơn hàng...",
+  "error_login_required": "Vui lòng đăng nhập để xem lịch sử đơn hàng.",
+  "error_fetch_failed": "Không thể tải lịch sử đơn hàng. Vui lòng kiểm tra kết nối. {{error}}",
+  "no_orders": "Bạn chưa có đơn hàng nào.",
+  "order_number": "Đơn hàng #{{id}}",
+  "status_pending": "ĐANG XỬ LÝ",
+  "status_delivered": "ĐÃ GIAO",
+  "status_shipped": "ĐANG GIAO",
+  "status_cancelled": "ĐÃ HỦY",
+  "recipient_info": "Người nhận:",
+  "recipient_name": "Tên: {{name}}",
+  "recipient_phone": "SĐT: {{phone}}",
+  "recipient_address": "Địa chỉ: {{address}}",
+  "payment_method": "Thanh toán: {{method}}",
+  "product_list": "Sản phẩm ({{count}})",
+  "total_amount": "Tổng cộng: ${{amount}}",
+  "order_date": "Ngày đặt: {{date}}",
+  "no_payment_method": "Chưa chọn phương thức thanh toán",
+  "no_name": "Chưa có tên",
+  "no_phone": "Chưa có số điện thoại",
+  "no_address": "Chưa có địa chỉ"
 }

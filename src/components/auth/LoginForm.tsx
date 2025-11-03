@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { type LoginFormData } from '@/pages/AuthPage'
 import InputField from '@/components/common/InputField'
 import { ERROR_KEYS } from '@/constants/errorKeys'
+import { useLoginValidation } from '@/hooks/useLoginValidation'
 
 interface LoginFormProps {
   onSubmit: (data: LoginFormData) => void
@@ -13,17 +14,14 @@ type ErrorKey = (typeof ERROR_KEYS)[keyof typeof ERROR_KEYS]
 
 export default function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
   const { t } = useTranslation('auth')
+  const { validateLogin } = useLoginValidation()
   const [errors, setErrors] = useState<Record<ErrorKey, string>>({} as Record<ErrorKey, string>)
 
   async function handleAction(formData: FormData) {
     const usernameOrEmail = formData.get('usernameOrEmail')?.toString().trim() || ''
     const password = formData.get('password')?.toString() || ''
 
-    const newErrors: Record<ErrorKey, string> = {} as Record<ErrorKey, string>
-
-    if (!usernameOrEmail) newErrors[ERROR_KEYS.USERNAME_OR_EMAIL] = t('error_username_or_email')
-    if (!password || password.length < 6) newErrors[ERROR_KEYS.PASSWORD] = t('error_password')
-
+    const newErrors = validateLogin({ usernameOrEmail, password })
     setErrors(newErrors)
     if (Object.keys(newErrors).length > 0) return
 

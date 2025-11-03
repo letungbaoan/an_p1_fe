@@ -16,5 +16,6 @@ export const ROUTES = {
   PROFILE: '/profile',
   CART: '/cart',
   PRODUCT_DETAIL: '/products/:id',
-  FORGOT_PASSWORD: '/forgot-password'
+  FORGOT_PASSWORD: '/forgot-password',
+  CHECKOUT: '/checkout'
 } as const

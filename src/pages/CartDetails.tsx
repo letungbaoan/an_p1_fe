@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
-import { getCart, removeFromCart } from '@/utils/storage'
+import { addCheckoutItems, getCart, removeFromCart } from '@/utils/storage'
 import type { CartItem } from '@/types/product'
 import { Trash2, Plus, Minus } from 'lucide-react'
 import SafeImage from '@/components/common/SafeImage'
@@ -10,6 +10,7 @@ import SafeImage from '@/components/common/SafeImage'
 const CartDetails: React.FC = () => {
   const { t } = useTranslation('cart')
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const cart = getCart()
@@ -63,6 +64,13 @@ const CartDetails: React.FC = () => {
     if (!productId) return
     removeFromCart(productId)
     setCartItems((prev) => prev.filter((item) => item?.product?.id !== productId))
+  }
+
+  const handleCheckout = () => {
+    if (!cartItems || cartItems.length === 0) return
+
+    addCheckoutItems('cart', cartItems)
+    navigate('/checkout')
   }
 
   if (!cartItems || cartItems.length === 0) {
@@ -139,7 +147,10 @@ const CartDetails: React.FC = () => {
       </div>
 
       <div className='mt-6 text-right'>
-        <button className='rounded-lg bg-purple-600 px-6 py-3 text-white transition hover:bg-purple-700'>
+        <button
+          onClick={handleCheckout}
+          className='rounded-lg bg-purple-600 px-6 py-3 text-white transition hover:bg-purple-700'
+        >
           {t('checkout')}
         </button>
       </div>

@@ -5,17 +5,18 @@ import { ROUTES } from '@/constants/routes'
 import { Link } from 'react-router-dom'
 import InputField from '@/components/common/InputField'
 import { ERROR_KEYS } from '@/constants/errorKeys'
+import { useRegisterValidation } from '@/hooks/useRegisterValidation'
 
 interface RegisterFormProps {
   onSubmit: (data: RegisterFormData) => void
   isLoading: boolean
 }
 
-// 🔹 Kiểu dữ liệu cho key lỗi (liên kết trực tiếp với ERROR_KEYS)
 type ErrorKey = (typeof ERROR_KEYS)[keyof typeof ERROR_KEYS]
 
 export default function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
   const { t } = useTranslation('auth')
+  const { validateRegister } = useRegisterValidation()
   const [errors, setErrors] = useState<Record<ErrorKey, string>>({} as Record<ErrorKey, string>)
 
   async function handleAction(formData: FormData) {
@@ -23,18 +24,10 @@ export default function RegisterForm({ onSubmit, isLoading }: RegisterFormProps)
     const email = formData.get('email')?.toString().trim() || ''
     const password = formData.get('password')?.toString() || ''
 
-    const newErrors: Record<ErrorKey, string> = {} as Record<ErrorKey, string>
+    const newErrors = validateRegister({ username, email, password })
+    setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) return
 
-    if (!username || username.length < 6) newErrors[ERROR_KEYS.USERNAME] = t('error_username')
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors[ERROR_KEYS.EMAIL] = t('error_email')
-    if (!password || password.length < 6) newErrors[ERROR_KEYS.PASSWORD] = t('error_password')
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-      return
-    }
-
-    setErrors({} as Record<ErrorKey, string>)
     onSubmit({ username, email, password })
   }
 

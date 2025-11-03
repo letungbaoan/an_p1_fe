@@ -1,14 +1,15 @@
-import type { Product } from '@/types/product'
+import type { CheckoutItem } from '@/types/checkout'
+import type { CartItem, Product } from '@/types/product'
 
 const CART_KEY = 'cart_items'
 const WISHLIST_KEY = 'wishlist_items'
+const CHECKOUT_KEY = 'checkout_items'
 
 const emitEvent = (name: string) => {
   window.dispatchEvent(new Event(name))
 }
 
-// --- CART ---
-export const getCart = (): { product: Product; amount: number }[] => {
+export const getCart = (): CartItem[] => {
   const data = localStorage.getItem(CART_KEY)
   return data ? JSON.parse(data) : []
 }
@@ -28,8 +29,8 @@ export const addToCart = (product: Product, quantity: number = 1) => {
 }
 
 export const removeFromCart = (productId: number) => {
-  const cart = getCart().filter((item) => item.product.id !== productId)
-  localStorage.setItem(CART_KEY, JSON.stringify(cart))
+  const updatedCart = getCart().filter((item) => item.product.id !== productId)
+  localStorage.setItem(CART_KEY, JSON.stringify(updatedCart))
   emitEvent('cartUpdated')
 }
 
@@ -38,7 +39,6 @@ export const clearCart = () => {
   emitEvent('cartUpdated')
 }
 
-// --- WISHLIST ---
 export const getWishlist = (): Product[] => {
   const data = localStorage.getItem(WISHLIST_KEY)
   return data ? JSON.parse(data) : []
@@ -61,4 +61,30 @@ export const toggleWishlist = (product: Product) => {
 export const isInWishlist = (productId: number): boolean => {
   const wishlist = getWishlist()
   return wishlist.some((item) => item.id === productId)
+}
+
+export const getCheckoutItems = (): CheckoutItem[] => {
+  const data = localStorage.getItem(CHECKOUT_KEY)
+  return data ? JSON.parse(data) : []
+}
+
+export const addCheckoutItems = (source: 'buy-now' | 'cart', data: Product | CheckoutItem[], quantity?: number) => {
+  if (source === 'buy-now') {
+    const product = data as Product
+    const item: CartItem = {
+      product,
+      amount: quantity && quantity > 0 ? quantity : 1
+    }
+    localStorage.setItem(CHECKOUT_KEY, JSON.stringify([item]))
+  } else if (source === 'cart') {
+    const cartItems = data as CheckoutItem[]
+    localStorage.setItem(CHECKOUT_KEY, JSON.stringify(cartItems))
+  }
+
+  emitEvent('checkoutUpdated')
+}
+
+export const clearCheckout = () => {
+  localStorage.removeItem(CHECKOUT_KEY)
+  emitEvent('checkoutUpdated')
 }

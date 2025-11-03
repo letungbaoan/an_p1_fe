@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ProfileForm from '@/components/myAccount/ProfileForm'
 import { useTranslation } from 'react-i18next'
+import OrderHistoryTab from '@/components/myAccount/OrderHistoryTab'
 
 const TABS = ['profile', 'orderHistory']
 
@@ -29,9 +30,7 @@ export default function MyAccountPage() {
       <div className='ml-6 flex-1 rounded-xl bg-white p-8 shadow-lg'>
         {activeTab === 'profile' && <ProfileForm />}
 
-        {activeTab === 'orderHistory' && (
-          <div className='p-10 text-center text-gray-500'>{t('orderHistoryComingSoon')}</div>
-        )}
+        {activeTab === 'orderHistory' && <OrderHistoryTab />}
       </div>
     </div>
   )
