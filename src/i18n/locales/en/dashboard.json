@@ -1,0 +1,14 @@
+{
+  "month_short": "M{{month}}",
+  "title": "Dashboard Overview",
+  "loading": "Loading dashboard data...",
+  "error": "Error: Unable to load data.",
+  "total_orders": "Total Orders",
+  "total_sales": "Total Sales",
+  "total_users": "Total Users",
+  "recent_reviews": "Recent Reviews",
+  "sales_chart_label": "Sales (USD)",
+  "sales_chart_title": "Monthly Sales Statistics",
+  "fetchFailed": "Failed to load dashboard data.",
+  "apiError": "API Error: {{message}}"
+}

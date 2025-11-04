@@ -4,6 +4,8 @@ import api from '@/utils/api'
 import type { LoginFormData, RegisterFormData } from '@/pages/AuthPage'
 import { API_ENDPOINTS } from '@/constants/api'
 import type { User, UserData } from '@/types/user'
+import i18n from '@/i18n'
+import { handleApiError } from '@/utils/handleApiError'
 
 interface AuthState {
   user: User | null
@@ -33,7 +35,6 @@ export const loginUser = createAsyncThunk<User, LoginFormData>(
   async ({ usernameOrEmail, password }, { rejectWithValue }) => {
     try {
       const usernameResponse = await api.get<UserData[]>(`${API_ENDPOINTS.USERS}?username=${usernameOrEmail}`)
-
       let foundUser = usernameResponse.data[0]
 
       if (!foundUser) {
@@ -42,18 +43,21 @@ export const loginUser = createAsyncThunk<User, LoginFormData>(
       }
 
       if (!foundUser) {
-        return rejectWithValue('User not found.')
+        return rejectWithValue(i18n.t('auth:userNotFound', 'Người dùng không tồn tại.'))
+      }
+
+      if (foundUser.active === false) {
+        return rejectWithValue(i18n.t('auth:accountDeactivated', 'Tài khoản đã bị vô hiệu hóa.'))
       }
 
       if (foundUser.password !== password) {
-        return rejectWithValue('Invalid credentials.')
+        return rejectWithValue(i18n.t('auth:invalidCredentials', 'Thông tin đăng nhập không chính xác.'))
       }
 
       const { password: _, ...userToStore } = foundUser
       return userToStore as User
     } catch (error) {
-      const errorMessage = 'Login failed due to a network or server issue.'
-      return rejectWithValue(errorMessage)
+      return rejectWithValue(handleApiError(error, 'auth:loginFailed'))
     }
   }
 )
@@ -65,16 +69,15 @@ export const registerUser = createAsyncThunk<User, RegisterFormData>(
       const newUserPayload: UserData = {
         ...data,
         id: Date.now(),
-        role: 'user'
+        role: 'user',
+        active: true
       }
 
       const response = await api.post<UserData>(API_ENDPOINTS.USERS, newUserPayload)
-
       const { password: _, ...userToStore } = response.data
       return userToStore as User
     } catch (error) {
-      const errorMessage = 'Registration failed due to a network or server issue.'
-      return rejectWithValue(errorMessage)
+      return rejectWithValue(handleApiError(error, 'auth:registerFailed'))
     }
   }
 )
@@ -85,19 +88,19 @@ export const updateUser = createAsyncThunk<User, UpdatePayload>(
     try {
       const state = getState() as { auth: AuthState }
       const currentUser = state.auth.user
-      if (!currentUser) return rejectWithValue('No logged-in user.')
+      if (!currentUser) return rejectWithValue(i18n.t('auth:noUser', 'Không có người dùng đang đăng nhập.'))
 
       const payload: Partial<UserData> = {
         username: updatedData.username,
         email: updatedData.email,
         ...(updatedData.password && updatedData.password !== '********' && { password: updatedData.password })
       }
-      const response = await api.patch<UserData>(`${API_ENDPOINTS.USERS}/${currentUser.id}`, payload)
 
+      const response = await api.patch<UserData>(`${API_ENDPOINTS.USERS}/${currentUser.id}`, payload)
       const { password: _, ...userToStore } = response.data
       return userToStore as User
     } catch (error) {
-      return rejectWithValue('Update failed due to network or server issue.')
+      return rejectWithValue(handleApiError(error, 'auth:updateFailed'))
     }
   }
 )
@@ -110,7 +113,6 @@ export const authSlice = createSlice({
       state.user = null
       state.isLoggedIn = false
       state.error = null
-
       localStorage.removeItem('user')
       localStorage.removeItem('isLoggedIn')
     },
@@ -120,24 +122,21 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
+      // login
       .addCase(loginUser.pending, (state) => {
         state.loading = 'pending'
         state.error = null
       })
-
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<User>) => {
         state.loading = 'succeeded'
         state.user = action.payload
         state.isLoggedIn = true
-
         localStorage.setItem('user', JSON.stringify(action.payload))
         localStorage.setItem('isLoggedIn', 'true')
       })
-
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = 'failed'
-        state.error = (action.payload as string) || 'Authentication failed.'
+        state.error = (action.payload as string) || i18n.t('auth:authFailed', 'Xác thực thất bại.')
         state.isLoggedIn = false
       })
 
@@ -145,22 +144,20 @@ export const authSlice = createSlice({
         state.loading = 'pending'
         state.error = null
       })
-
       .addCase(registerUser.fulfilled, (state, action: PayloadAction<User>) => {
         state.loading = 'succeeded'
         state.user = action.payload
         state.isLoggedIn = true
-
         localStorage.setItem('user', JSON.stringify(action.payload))
         localStorage.setItem('isLoggedIn', 'true')
       })
-
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = 'failed'
-        state.error = (action.payload as string) || 'Registration failed.'
+        state.error = (action.payload as string) || i18n.t('auth:registerFailed', 'Đăng ký thất bại.')
         state.isLoggedIn = false
       })
 
+      // update
       .addCase(updateUser.pending, (state) => {
         state.loading = 'pending'
         state.error = null
@@ -172,7 +169,7 @@ export const authSlice = createSlice({
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.loading = 'failed'
-        state.error = (action.payload as string) || 'Update failed.'
+        state.error = (action.payload as string) || i18n.t('auth:updateFailed', 'Cập nhật thất bại.')
       })
   }
 })

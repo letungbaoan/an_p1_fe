@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch } from '@/redux/store'
 import AuthNavigator from '@/components/auth/AuthNavigator'
 import LoginForm from '@/components/auth/LoginForm'
 import RegisterForm from '@/components/auth/RegisterForm'
-import { loginUser, registerUser, clearAuthError } from '@/redux/slices/authSlice'
+import { loginUser, registerUser } from '@/redux/slices/authSlice'
 import type { RootState } from '@/redux/store'
-import { useAppDispatch } from '@/redux/hooks'
 import { useTranslation } from 'react-i18next'
+import type { User } from '@/types/user'
+import { ADMIN_ROUTES, ROUTES } from '@/constants/routes'
+import useAuthErrorToast from '@/hooks/useAuthErrorToast'
 
 export interface LoginFormData {
   usernameOrEmail: string
@@ -22,40 +25,55 @@ export interface RegisterFormData {
 }
 
 const AuthPage = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const { t } = useTranslation('auth')
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const { t } = useTranslation()
 
   const { isLoggedIn, loading, error } = useSelector((state: RootState) => state.auth)
 
   const [isLogin, setIsLogin] = useState(true)
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      toast.success(t('auth:login_success'))
-      navigate('/')
-    }
+  useAuthErrorToast(error)
 
-    if (error) {
-      toast.error(error)
-      dispatch(clearAuthError())
+  const handleAuthSuccess = (user: User) => {
+    toast.success(t('login_success'))
+    if (user.role === 'admin') {
+      navigate(ADMIN_ROUTES.HOME)
+    } else {
+      navigate(ROUTES.HOME)
     }
-  }, [isLoggedIn, error, navigate, dispatch, t])
+  }
 
   const handleLogin = (data: LoginFormData) => {
     dispatch(loginUser(data))
+      .unwrap()
+      .then((user) => {
+        handleAuthSuccess(user)
+      })
+      .catch((errorMsg) => {
+        toast.error(errorMsg || t('login_failed'))
+      })
   }
 
   const handleRegister = (data: RegisterFormData) => {
     dispatch(registerUser(data))
+      .unwrap()
+      .then((user) => {
+        handleAuthSuccess(user)
+      })
+      .catch((errorMsg) => {
+        toast.error(errorMsg || t('register_failed'))
+      })
   }
 
   const isSubmitting = loading === 'pending'
 
+  if (isLoggedIn) return null
+
   return (
     <div className='flex min-h-[500px] items-center justify-center'>
       <Toaster position='top-right' />
-      <div className='w-full max-w-md bg-white p-8'>
+      <div className='w-full max-w-md rounded-xl bg-white p-8 shadow-xl'>
         <AuthNavigator isLogin={isLogin} setIsLogin={setIsLogin} />
         {isLogin ? (
           <LoginForm onSubmit={handleLogin} isLoading={isSubmitting} />

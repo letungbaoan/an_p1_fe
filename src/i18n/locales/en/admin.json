@@ -1,0 +1,49 @@
+{
+  "admin": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "users": "Users",
+    "logout": "Log out"
+  },
+  "common": {
+    "language_toggle_en": "English",
+    "language_toggle_vi": "Vietnamese"
+  },
+  "orderList": {
+    "title": "Order List",
+    "loading": "Loading orders...",
+    "noOrders": "No orders found.",
+    "errorPrefix": "Error: ",
+    "id": "ID",
+    "orderDate": "Order Date",
+    "total": "Total",
+    "status": "Status",
+    "actions": "Actions",
+    "view": "View details",
+    "productsCount": "{{count}} items",
+    "statusOptions": {
+      "pending": "Pending",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
+  "users": "Users",
+  "loading_users": "Loading users...",
+  "username": "Username",
+  "email": "Email",
+  "status": "Status",
+  "active": "Active",
+  "inactive": "Inactive",
+  "active_inactive_toggle": "Active / Inactive Toggle",
+  "error_load_users": "Failed to load user list.",
+  "status_update_success": "Status updated successfully!",
+  "status_update_failed": "Failed to update status!",
+  "fetchFailed": "Failed to fetch orders list.",
+  "fetchAllFailed": "Failed to fetch all orders.",
+  "fetchDetailFailed": "Failed to fetch order details.",
+  "updateFailed": "Failed to update order status.",
+  "fetchUserListFailed": "Failed to load user list.",
+  "updateUserStatusFailed": "Failed to update user status."
+}

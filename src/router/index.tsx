@@ -1,58 +1,67 @@
 import { createBrowserRouter } from 'react-router-dom'
-
 import UserLayout from '../layouts/UserLayout'
 import Home from '../pages/Home'
 import NotFound from '@/pages/NotFound'
 import AuthPage from '@/pages/AuthPage'
-import { ROUTES } from '@/constants/routes'
+import { ADMIN_ROUTES, ROUTES } from '@/constants/routes'
 import PublicRoute from '@/router/PublicRoute'
 import ContactPage from '@/pages/ContactPage'
 import CartDetails from '@/pages/CartDetails'
 import ProductsPage from '@/pages/ProductsPage'
-import PrivateRoute from '@/router/PrivateRoute'
+import UserRoute from '@/router/UserRoute'
 import MyAccountPage from '@/pages/user/MyAccountPage'
 import ProductDetailPage from '@/pages/ProductDetailPage'
 import CheckoutPage from '@/pages/user/CheckoutPage'
+import AdminRoute from '@/router/AdminRoute'
+import DashboardPage from '@/pages/admin/Dashboard'
+import AdminLayout from '@/layouts/AdminLayout'
+import NonAdminRoute from '@/router/NonAdminRoute'
+import OrderList from '@/pages/admin/OrderList'
+import OrderDetail from '@/pages/admin/OrderDetail'
+import AdminUsersPage from '@/pages/admin/AdminUserPage'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <UserLayout />,
+    element: <NonAdminRoute />,
     children: [
       {
-        index: true,
-        element: <Home />
-      },
-      { path: ROUTES.CONTACT, element: <ContactPage /> },
-      { path: ROUTES.CART, element: <CartDetails /> },
-      { path: ROUTES.PRODUCTS, element: <ProductsPage /> },
-      { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage /> },
-      {
-        element: <PublicRoute />,
+        path: '/',
+        element: <UserLayout />,
         children: [
+          { index: true, element: <Home /> },
+          { path: ROUTES.CONTACT, element: <ContactPage /> },
+          { path: ROUTES.CART, element: <CartDetails /> },
+          { path: ROUTES.PRODUCTS, element: <ProductsPage /> },
+          { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailPage /> },
           {
-            path: ROUTES.LOGIN,
-            element: <AuthPage />
-          }
-        ]
-      },
-      {
-        element: <PrivateRoute />,
-        children: [
-          {
-            path: ROUTES.PROFILE,
-            element: <MyAccountPage />
+            element: <PublicRoute />,
+            children: [{ path: ROUTES.LOGIN, element: <AuthPage /> }]
           },
           {
-            path: ROUTES.CHECKOUT,
-            element: <CheckoutPage />
+            element: <UserRoute />,
+            children: [
+              { path: ROUTES.PROFILE, element: <MyAccountPage /> },
+              { path: ROUTES.CHECKOUT, element: <CheckoutPage /> }
+            ]
           }
         ]
-      },
-      {
-        path: '*',
-        element: <NotFound />
       }
     ]
-  }
+  },
+  {
+    path: '/admin',
+    element: <AdminRoute />,
+    children: [
+      {
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <DashboardPage /> },
+          { path: ADMIN_ROUTES.ORDERS, element: <OrderList /> },
+          { path: ADMIN_ROUTES.ORDER_DETAIL, element: <OrderDetail /> },
+          { path: ADMIN_ROUTES.USERS, element: <AdminUsersPage /> }
+        ]
+      }
+    ]
+  },
+  { path: '*', element: <NotFound /> }
 ])

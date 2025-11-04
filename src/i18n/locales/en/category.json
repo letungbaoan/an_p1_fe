@@ -9,5 +9,7 @@
     "breakfast_dairy": "Breakfast & Dairy",
     "frozen_foods": "Frozen Foods",
     "grocery_staples": "Grocery & Staples"
-  }
+  },
+  "fetchFailed": "Failed to load category list.",
+  "unknownError": "Unknown error while loading categories."
 }

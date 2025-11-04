@@ -65,17 +65,19 @@
     },
     {
       "id": 1761295827638,
-      "username": "baoan7604@gmail.comm",
-      "email": "baoan7604@gmail.com",
+      "username": "user1",
+      "email": "user@gmail.com",
       "role": "user",
-      "password": "1234567"
+      "password": "user123",
+      "active": true
     },
     {
       "username": "baoan7604@gmail.commmm",
       "email": "baoan7604@gmail.comm",
       "password": "1234567",
       "id": 1761535328751,
-      "role": "user"
+      "role": "user",
+      "active": true
     }
   ],
   "userFeature": {
@@ -1384,6 +1386,7 @@
       ],
       "total": 211.99,
       "payment_method": "Credit Card",
+      "date": "29/07/2025",
       "created_at": "2025-10-27T12:30:00Z"
     },
     {
@@ -1408,6 +1411,7 @@
         }
       ],
       "total": 335.28000000000003,
+      "date": "29/07/2025",
       "payment_method": "credit_card"
     },
     {
@@ -1433,6 +1437,7 @@
       ],
       "total": 335.28000000000003,
       "payment_method": "direct_bank_transfer",
+      "date": "29/10/2025",
       "status": "pending"
     },
     {
@@ -1452,6 +1457,7 @@
         }
       ],
       "total": 54,
+      "date": "29/08/2025",
       "payment_method": "credit_card"
     },
     {
@@ -1472,6 +1478,7 @@
       ],
       "total": 47.94,
       "payment_method": "cash_on_delivery",
+      "date": "29/09/2025",
       "status": "shipped"
     },
     {
@@ -1516,7 +1523,8 @@
       ],
       "total": 106.17,
       "payment_method": "direct_bank_transfer",
-      "status": "pending"
+      "date": "29/10/2025",
+      "status": "cancelled"
     },
     {
       "id": 1761652577114,
@@ -1543,10 +1551,10 @@
       "total": 335.28000000000003,
       "payment_method": "direct_bank_transfer",
       "date": "29/10/2025",
-      "status": "pending"
+      "status": "delivered"
     },
     {
-      "id": 1761705683080,
+      "id": 1761705554853,
       "user_id": 1761295827638,
       "full_name": "ádfsadf",
       "email": "stg.schooler.admin.comtor.1@example.com",
@@ -1557,7 +1565,7 @@
         {
           "product_id": "9",
           "name": "Whole Cleaned Free-Range Chicken",
-          "quantity": 16,
+          "quantity": 22,
           "price": 14.99
         },
         {
@@ -1567,37 +1575,91 @@
           "price": 5.5
         }
       ],
-      "total": 245.34,
+      "total": 335.28000000000003,
       "payment_method": "credit_card",
       "date": "29/10/2025",
-      "status": "pending"
+      "status": "cancelled"
     },
     {
-      "id": 1761705913763,
+      "id": 1761842008961,
       "user_id": 1761295827638,
-      "full_name": "ádfsadf",
-      "email": "stg.schooler.admin.comtor.1@example.com",
-      "phone_number": "sadfasdf",
-      "shipping_address": "ádfsadf",
+      "full_name": "Lê Tùng Bảo Ân EDX0629 -",
+      "email": "baoan7604@gmail.com",
+      "phone_number": "0918736329",
+      "shipping_address": "108 đường số 3 Cư Xá Lữ Gia P15, Q11, TP.HCM",
       "order_notes": "",
       "items": [
         {
-          "product_id": "9",
-          "name": "Whole Cleaned Free-Range Chicken",
-          "quantity": 16,
-          "price": 14.99
+          "product_id": "4",
+          "name": "Norwegian Salmon Fillet (300g)",
+          "quantity": 1,
+          "price": 9.5
         },
         {
-          "product_id": "36",
-          "name": "Chocolate Chip Cookies",
+          "product_id": "5",
+          "name": "Frozen Tiger Prawns (500g)",
           "quantity": 1,
-          "price": 5.5
+          "price": 15.99
+        },
+        {
+          "product_id": "2",
+          "name": "Grass-Fed Ground Beef (500g)",
+          "quantity": 1,
+          "price": 7.99
         }
       ],
-      "total": 245.34,
+      "total": 33.480000000000004,
       "payment_method": "direct_bank_transfer",
-      "date": "29/10/2025",
-      "status": "pending"
+      "date": "30/10/2025",
+      "status": "cancelled"
+    },
+    {
+      "id": 1761842151575,
+      "user_id": 1761295827638,
+      "full_name": "Lê Tùng Bảo Ân EDX0629 -",
+      "email": "baoan7604@gmail.com",
+      "phone_number": "0918736329",
+      "shipping_address": "108 đường số 3 Cư Xá Lữ Gia P15, Q11, TP.HCM",
+      "order_notes": "",
+      "items": [
+        {
+          "product_id": "11",
+          "name": "Vietnamese Fish Paste (Chả Cá)",
+          "quantity": 1,
+          "price": 5.99
+        }
+      ],
+      "total": 5.99,
+      "payment_method": "direct_bank_transfer",
+      "date": "30/10/2025",
+      "status": "delivered"
+    },
+    {
+      "id": 1762314591639,
+      "user_id": 1761295827638,
+      "full_name": "Lê Tùng Bảo Ân EDX0629 -",
+      "email": "baoan7604@gmail.com",
+      "phone_number": "0918736329",
+      "shipping_address": "108 đường số 3 Cư Xá Lữ Gia P15, Q11, TP.HCM",
+      "order_notes": "",
+      "items": [
+        {
+          "product_id": "22",
+          "name": "Organic Baby Milk Powder",
+          "quantity": 1,
+          "price": 35.5
+        },
+        {
+          "product_id": "23",
+          "name": "Baby Diapers Pack",
+          "quantity": 1,
+          "price": 20
+        }
+      ],
+      "total": 55.5,
+      "payment_method": "direct_bank_transfer",
+      "date": "05/11/2025",
+      "status": "delivered"
     }
   ]
 }

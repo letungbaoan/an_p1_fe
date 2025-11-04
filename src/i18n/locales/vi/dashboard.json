@@ -1,0 +1,14 @@
+{
+  "month_short": "Thg {{month}}",
+  "title": "Tổng quan Dashboard",
+  "loading": "Đang tải dữ liệu Dashboard...",
+  "error": "Lỗi: Không thể tải dữ liệu.",
+  "total_orders": "Tổng Đơn Hàng",
+  "total_sales": "Tổng Doanh Số",
+  "total_users": "Tổng Người Dùng",
+  "recent_reviews": "Đánh giá gần đây",
+  "sales_chart_label": "Doanh Số ($)",
+  "sales_chart_title": "Thống kê Doanh số hàng tháng",
+  "fetchFailed": "Không thể tải dữ liệu bảng điều khiển.",
+  "apiError": "Lỗi API: {{message}}"
+}

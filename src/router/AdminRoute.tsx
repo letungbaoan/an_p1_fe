@@ -4,11 +4,11 @@ import { useAppSelector } from '@/redux/hooks'
 import type { RootState } from '@/redux/store'
 import { ROUTES } from '@/constants/routes'
 
-interface PrivateRouteProps {
+interface AdminRouteProps {
   allowedRole?: 'user' | 'admin'
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ allowedRole = 'user' }) => {
+const AdminRoute: React.FC<AdminRouteProps> = ({ allowedRole = 'admin' }) => {
   const { isLoggedIn, user } = useAppSelector((state: RootState) => state.auth)
 
   if (!isLoggedIn || !user || user.role !== allowedRole) {
@@ -18,4 +18,4 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ allowedRole = 'user' }) => 
   return <Outlet />
 }
 
-export default PrivateRoute
+export default AdminRoute
