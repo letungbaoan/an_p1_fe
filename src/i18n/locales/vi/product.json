@@ -41,5 +41,7 @@
   "load_product_fail": "Tải sản phẩm thất bại với lỗi: {{error}}",
   "fetchNewFailed": "Không thể tải sản phẩm mới.",
   "fetchFeaturedFailed": "Không thể tải sản phẩm nổi bật.",
-  "fetchListFailed": "Không thể tải danh sách sản phẩm."
+  "fetchListFailed": "Không thể tải danh sách sản phẩm.",
+  "search_placeholder": "Tìm kiếm bằng tên",
+  "addProductFailed": "Thêm sản phẩm thất bại"
 }

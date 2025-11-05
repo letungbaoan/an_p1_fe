@@ -14,8 +14,6 @@ const ADMIN_NAV_ITEMS = [
   { nameKey: 'admin.users', icon: Users, path: ADMIN_ROUTES.USERS }
 ]
 
-const SIDEBAR_WIDTH = 'w-64'
-
 const AdminLayout: React.FC = () => {
   const { t, i18n } = useTranslation('admin')
   const dispatch = useAppDispatch()
@@ -33,9 +31,9 @@ const AdminLayout: React.FC = () => {
 
   return (
     <div className='flex min-h-screen bg-gray-100'>
-      <aside className={`sticky top-0 h-screen ${SIDEBAR_WIDTH} flex flex-col bg-purple-100 text-gray-800 shadow-xl`}>
+      <aside className={`sticky top-0 flex h-screen w-44 flex-col bg-purple-100 text-gray-800 shadow-xl`}>
         <div className='flex items-center justify-center border-b border-purple-200 py-5'>
-          <Logo /> {/* logo vẫn là chữ đen */}
+          <Logo />
         </div>
 
         <nav className='grow space-y-1 overflow-y-auto p-3'>

@@ -6,8 +6,8 @@ export const ROUTES = {
   MY_ACCOUNT: '/my-account',
   ORDER_TRACKING: '/order-tracking',
   SHOP: '/shop',
-  FRUITS: '/fruits',
-  BEVERAGES: '/beverages',
+  FRUITS: '/products?category_id=1',
+  BEVERAGES: '/products?category_id=3',
   BLOG: '/blog',
   CONTACT: '/contact',
   TERMS: '/terms',
@@ -17,7 +17,8 @@ export const ROUTES = {
   CART: '/cart',
   PRODUCT_DETAIL: '/products/:id',
   FORGOT_PASSWORD: '/forgot-password',
-  CHECKOUT: '/checkout'
+  CHECKOUT: '/checkout',
+  PRODUCTS_BASE: '/products'
 } as const
 
 export const ADMIN_ROUTES = {
@@ -25,5 +26,8 @@ export const ADMIN_ROUTES = {
   ORDERS: '/admin/orders',
   ORDER_DETAIL: '/admin/orders/:id',
   PRODUCTS: '/admin/products',
-  USERS: '/admin/users'
+  USERS: '/admin/users',
+  PRODUCT_DETAIL: '/admin/products/:id',
+  PRODUCTS_BASE: '/admin/products',
+  ADD_PRODUCT: '/admin/products/new'
 } as const

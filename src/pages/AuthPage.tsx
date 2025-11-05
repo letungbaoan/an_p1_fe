@@ -11,7 +11,6 @@ import type { RootState } from '@/redux/store'
 import { useTranslation } from 'react-i18next'
 import type { User } from '@/types/user'
 import { ADMIN_ROUTES, ROUTES } from '@/constants/routes'
-import useAuthErrorToast from '@/hooks/useAuthErrorToast'
 
 export interface LoginFormData {
   usernameOrEmail: string
@@ -29,11 +28,9 @@ const AuthPage = () => {
   const { t } = useTranslation('auth')
   const navigate = useNavigate()
 
-  const { isLoggedIn, loading, error } = useSelector((state: RootState) => state.auth)
+  const { isLoggedIn, loading } = useSelector((state: RootState) => state.auth)
 
   const [isLogin, setIsLogin] = useState(true)
-
-  useAuthErrorToast(error)
 
   const handleAuthSuccess = (user: User) => {
     toast.success(t('login_success'))

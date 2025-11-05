@@ -19,6 +19,9 @@ import NonAdminRoute from '@/router/NonAdminRoute'
 import OrderList from '@/pages/admin/OrderList'
 import OrderDetail from '@/pages/admin/OrderDetail'
 import AdminUsersPage from '@/pages/admin/AdminUserPage'
+import AdminProductsPage from '@/pages/admin/AdminProductsPage'
+import AdminProductDetailPage from '@/pages/admin/AdminProductDetailPage'
+import ProductAddPage from '@/pages/admin/ProductAddPage'
 
 export const router = createBrowserRouter([
   {
@@ -58,7 +61,10 @@ export const router = createBrowserRouter([
           { index: true, element: <DashboardPage /> },
           { path: ADMIN_ROUTES.ORDERS, element: <OrderList /> },
           { path: ADMIN_ROUTES.ORDER_DETAIL, element: <OrderDetail /> },
-          { path: ADMIN_ROUTES.USERS, element: <AdminUsersPage /> }
+          { path: ADMIN_ROUTES.USERS, element: <AdminUsersPage /> },
+          { path: ADMIN_ROUTES.PRODUCTS, element: <AdminProductsPage /> },
+          { path: ADMIN_ROUTES.PRODUCT_DETAIL, element: <AdminProductDetailPage /> },
+          { path: ADMIN_ROUTES.ADD_PRODUCT, element: <ProductAddPage /> }
         ]
       }
     ]

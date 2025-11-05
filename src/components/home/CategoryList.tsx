@@ -1,5 +1,3 @@
-// src/components/home/CategoryList.tsx
-
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import CategoryItem from './CategoryItem'
