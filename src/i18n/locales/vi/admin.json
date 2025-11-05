@@ -1,0 +1,49 @@
+{
+  "admin": {
+    "dashboard": "Bảng điều khiển",
+    "products": "Sản phẩm",
+    "orders": "Đơn hàng",
+    "users": "Người dùng",
+    "logout": "Đăng xuất"
+  },
+  "common": {
+    "language_toggle_en": "Tiếng Anh",
+    "language_toggle_vi": "Tiếng Việt"
+  },
+  "orderList": {
+    "title": "Danh sách đơn hàng",
+    "loading": "Đang tải đơn hàng...",
+    "noOrders": "Không có đơn hàng nào.",
+    "errorPrefix": "Lỗi: ",
+    "id": "ID",
+    "orderDate": "Ngày đặt",
+    "total": "Tổng tiền",
+    "status": "Trạng thái",
+    "actions": "Thao tác",
+    "view": "Xem chi tiết",
+    "productsCount": "{{count}} sản phẩm",
+    "statusOptions": {
+      "pending": "Chờ xử lý",
+      "shipped": "Đang giao",
+      "delivered": "Đã giao",
+      "cancelled": "Đã hủy"
+    }
+  },
+  "users": "Người dùng",
+  "loading_users": "Đang tải danh sách người dùng...",
+  "username": "Tên người dùng",
+  "email": "Email",
+  "status": "Trạng thái",
+  "active": "Đang hoạt động",
+  "inactive": "Ngừng hoạt động",
+  "active_inactive_toggle": "Bật / Tắt trạng thái",
+  "error_load_users": "Không thể tải danh sách người dùng.",
+  "status_update_success": "Cập nhật trạng thái thành công!",
+  "status_update_failed": "Cập nhật trạng thái thất bại!",
+  "fetchFailed": "Lấy danh sách đơn hàng thất bại.",
+  "fetchAllFailed": "Lấy tất cả đơn hàng thất bại.",
+  "fetchDetailFailed": "Lấy chi tiết đơn hàng thất bại.",
+  "updateFailed": "Cập nhật trạng thái đơn hàng thất bại.",
+  "fetchUserListFailed": "Không thể tải danh sách người dùng.",
+  "updateUserStatusFailed": "Không thể cập nhật trạng thái người dùng."
+}

@@ -37,5 +37,8 @@
   "review_too_short": "Your comment must be at least 10 characters.",
   "no_reviews": "This product has no review",
   "loading_product": "Loading product...",
-  "load_product_fail": "Load product fail with error: {{error}}"
+  "load_product_fail": "Load product fail with error: {{error}}",
+  "fetchNewFailed": "Failed to fetch new products.",
+  "fetchFeaturedFailed": "Failed to fetch featured products.",
+  "fetchListFailed": "Failed to load product list."
 }

@@ -38,5 +38,8 @@
   "review_too_short": "Nhận xét của bạn phải ít nhất 10 kí tự",
   "no_reviews": "Sản phẩm này không có đánh giá",
   "loading_product": "Đang tải sản phẩm...",
-  "load_product_fail": "Tải sản phẩm thất bại với lỗi: {{error}}"
+  "load_product_fail": "Tải sản phẩm thất bại với lỗi: {{error}}",
+  "fetchNewFailed": "Không thể tải sản phẩm mới.",
+  "fetchFeaturedFailed": "Không thể tải sản phẩm nổi bật.",
+  "fetchListFailed": "Không thể tải danh sách sản phẩm."
 }

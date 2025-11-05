@@ -19,3 +19,11 @@ export const ROUTES = {
   FORGOT_PASSWORD: '/forgot-password',
   CHECKOUT: '/checkout'
 } as const
+
+export const ADMIN_ROUTES = {
+  HOME: '/admin/',
+  ORDERS: '/admin/orders',
+  ORDER_DETAIL: '/admin/orders/:id',
+  PRODUCTS: '/admin/products',
+  USERS: '/admin/users'
+} as const

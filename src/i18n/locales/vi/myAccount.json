@@ -39,5 +39,12 @@
   "no_payment_method": "Chưa chọn phương thức thanh toán",
   "no_name": "Chưa có tên",
   "no_phone": "Chưa có số điện thoại",
-  "no_address": "Chưa có địa chỉ"
+  "no_address": "Chưa có địa chỉ",
+  "loading_order_detail": "Đang tải chi tiết đơn hàng...",
+  "order_not_found": "Không tìm thấy đơn hàng.",
+  "error_invalid_order": "Mã đơn hàng không hợp lệ.",
+  "status_update_success": "Cập nhật trạng thái thành công!",
+  "status_update_failed": "Cập nhật trạng thái thất bại!",
+  "order_detail_title": "Chi tiết đơn hàng #{{id}}",
+  "back_to_orders": "Quay lại danh sách đơn hàng"
 }

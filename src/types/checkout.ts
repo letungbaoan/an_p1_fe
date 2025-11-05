@@ -3,7 +3,7 @@ export interface CheckoutItem {
     id: number
     name: string
     price: number
-    imageUrls: string
+    imageUrls: string[]
   }
   amount: number
 }

@@ -31,6 +31,10 @@ import viMyAccount from './locales/vi/myAccount.json'
 import enMyAccount from './locales/en/myAccount.json'
 import viCheckout from './locales/vi/checkout.json'
 import enCheckout from './locales/en/checkout.json'
+import viDashboard from './locales/vi/dashboard.json'
+import enDashboard from './locales/en/dashboard.json'
+import viAdmin from './locales/vi/admin.json'
+import enAdmin from './locales/en/admin.json'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -49,7 +53,9 @@ i18n.use(initReactI18next).init({
       contact: enContact,
       cart: enCart,
       myAccount: enMyAccount,
-      checkout: enCheckout
+      checkout: enCheckout,
+      dashboard: enDashboard,
+      admin: enAdmin
     },
     vi: {
       header: viHeader,
@@ -66,7 +72,9 @@ i18n.use(initReactI18next).init({
       contact: viContact,
       cart: viCart,
       myAccount: viMyAccount,
-      checkout: viCheckout
+      checkout: viCheckout,
+      dashboard: viDashboard,
+      admin: viAdmin
     }
   },
   lng: 'en',
@@ -86,7 +94,9 @@ i18n.use(initReactI18next).init({
     'contact',
     'cart',
     'myAccount',
-    'checkout'
+    'checkout',
+    'dashboard',
+    'admin'
   ],
   defaultNS: 'common',
   interpolation: {

@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '@/utils/api'
 import { API_ENDPOINTS } from '@/constants/api'
-import axios from 'axios'
+import { handleApiError } from '@/utils/handleApiError'
+import i18n from '@/i18n'
 import type { Product } from '@/types/product'
 
 export interface ProductFilters {
@@ -53,14 +54,10 @@ export const fetchNewProducts = createAsyncThunk<Product[], void>(
   'products/fetchNewProducts',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get<Product[]>(`${API_ENDPOINTS.PRODUCTS}?_limit=6`)
-      return response.data
-    } catch (error) {
-      let errorMessage = 'Failed to fetch new products.'
-      if (axios.isAxiosError(error)) {
-        errorMessage = error.message
-      }
-      return rejectWithValue(errorMessage)
+      const res = await api.get<Product[]>(`${API_ENDPOINTS.PRODUCTS}?_limit=6`)
+      return res.data
+    } catch (err) {
+      return rejectWithValue(handleApiError(err, i18n.t('product:fetchNewFailed')))
     }
   }
 )
@@ -69,19 +66,12 @@ export const fetchFeaturedProducts = createAsyncThunk<Product[], FeaturedParams>
   'products/fetchFeaturedProducts',
   async ({ limit, page }, { rejectWithValue }) => {
     try {
-      const response = await api.get<Product[]>(`${API_ENDPOINTS.PRODUCTS}`, {
-        params: {
-          _limit: limit,
-          _page: page
-        }
+      const res = await api.get<Product[]>(API_ENDPOINTS.PRODUCTS, {
+        params: { _limit: limit, _page: page }
       })
-      return response.data
-    } catch (error) {
-      let errorMessage = 'Failed to fetch featured products.'
-      if (axios.isAxiosError(error)) {
-        errorMessage = error.message
-      }
-      return rejectWithValue(errorMessage)
+      return res.data
+    } catch (err) {
+      return rejectWithValue(handleApiError(err, i18n.t('product:fetchFeaturedFailed')))
     }
   }
 )
@@ -95,35 +85,39 @@ export const fetchProductList = createAsyncThunk<{ products: Product[]; totalPag
       const params: ProductQueryParams = {
         _page: page,
         _limit: limit,
-        ...(categoryIds && categoryIds.length > 0 && { category_id: categoryIds }),
-        ...(minPrice && { price_gte: minPrice }),
-        ...(maxPrice && { price_lte: maxPrice }),
-        ...(minRating && { rating_gte: minRating })
+        ...(categoryIds?.length ? { category_id: categoryIds } : {}),
+        ...(minPrice ? { price_gte: minPrice } : {}),
+        ...(maxPrice ? { price_lte: maxPrice } : {}),
+        ...(minRating ? { rating_gte: minRating } : {})
       }
 
-      const response = await api.get<Product[]>(API_ENDPOINTS.PRODUCTS, {
-        params
-      })
-
-      const totalCountHeader = response.headers['x-total-count']
-      const totalCount = totalCountHeader ? parseInt(totalCountHeader) : response.data.length
+      const res = await api.get<Product[]>(API_ENDPOINTS.PRODUCTS, { params })
+      const totalCountHeader = res.headers['x-total-count']
+      const totalCount = totalCountHeader ? parseInt(totalCountHeader) : res.data.length
       const totalPages = Math.ceil(totalCount / limit)
 
-      return { products: response.data, totalPages }
-    } catch (error) {
-      let errorMessage = 'Failed to load product list.'
-      if (axios.isAxiosError(error)) {
-        errorMessage = error.message
-      }
-      return rejectWithValue(errorMessage)
+      return { products: res.data, totalPages }
+    } catch (err) {
+      return rejectWithValue(handleApiError(err, i18n.t('product:fetchListFailed')))
     }
   }
 )
 
-export const productsSlice = createSlice({
+const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    clearProducts: (state) => {
+      state.newProducts = []
+      state.featuredProducts = []
+      state.listProducts = []
+      state.totalPages = 1
+      state.loadingNew = 'idle'
+      state.loadingFeatured = 'idle'
+      state.loadingList = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNewProducts.pending, (state) => {
@@ -136,8 +130,8 @@ export const productsSlice = createSlice({
       })
       .addCase(fetchNewProducts.rejected, (state, action) => {
         state.loadingNew = 'failed'
-        state.error = (action.payload as string) || 'Could not load new products.'
         state.newProducts = []
+        state.error = action.payload as string
       })
 
       .addCase(fetchFeaturedProducts.pending, (state) => {
@@ -150,8 +144,8 @@ export const productsSlice = createSlice({
       })
       .addCase(fetchFeaturedProducts.rejected, (state, action) => {
         state.loadingFeatured = 'failed'
-        state.error = (action.payload as string) || 'Could not load featured products.'
         state.featuredProducts = []
+        state.error = action.payload as string
       })
 
       .addCase(fetchProductList.pending, (state) => {
@@ -167,9 +161,10 @@ export const productsSlice = createSlice({
         state.loadingList = 'failed'
         state.listProducts = []
         state.totalPages = 1
-        state.error = (action.payload as string) || 'Could not load product list.'
+        state.error = action.payload as string
       })
   }
 })
 
+export const { clearProducts } = productsSlice.actions
 export default productsSlice.reducer

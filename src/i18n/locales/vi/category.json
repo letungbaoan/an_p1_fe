@@ -9,5 +9,7 @@
     "breakfast_dairy": "Ăn Sáng & Sữa",
     "frozen_foods": "Thực Phẩm Đông Lạnh",
     "grocery_staples": "Hàng Tạp Hóa & Gia Vị"
-  }
+  },
+  "fetchFailed": "Không thể tải danh sách danh mục.",
+  "unknownError": "Lỗi không xác định khi tải danh mục."
 }

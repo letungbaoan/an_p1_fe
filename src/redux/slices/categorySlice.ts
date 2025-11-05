@@ -2,8 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '@/utils/api'
 import { type CategoryData } from '@/types/category'
 import { type RootState } from '../store'
-import axios from 'axios'
 import { API_ENDPOINTS } from '@/constants/api'
+import i18n from '@/i18n'
+import { handleApiError } from '@/utils/handleApiError'
 
 export interface CategoryState {
   loading: 'idle' | 'pending' | 'succeeded' | 'failed'
@@ -26,10 +27,7 @@ export const fetchCategories = createAsyncThunk<CategoryData[], void, { state: R
       const response = await api.get<CategoryData[]>(CATEGORIES_ENDPOINT)
       return response.data
     } catch (error) {
-      let errorMessage = 'Lỗi không xác định khi tải danh mục.'
-      if (axios.isAxiosError(error) && error.message) {
-        errorMessage = error.message
-      }
+      const errorMessage = handleApiError(error, 'admin:loadCategoriesFailed')
       return rejectWithValue(errorMessage)
     }
   }
@@ -40,19 +38,20 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCategories.pending, (state) => {
-      state.loading = 'pending'
-      state.error = null
-    })
-    builder.addCase(fetchCategories.fulfilled, (state, action) => {
-      state.loading = 'succeeded'
-      state.categories = action.payload
-    })
-    builder.addCase(fetchCategories.rejected, (state, action) => {
-      state.loading = 'failed'
-      state.categories = []
-      state.error = (action.payload as string) || 'Tải dữ liệu thất bại.'
-    })
+    builder
+      .addCase(fetchCategories.pending, (state) => {
+        state.loading = 'pending'
+        state.error = null
+      })
+      .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.loading = 'succeeded'
+        state.categories = action.payload
+      })
+      .addCase(fetchCategories.rejected, (state, action) => {
+        state.loading = 'failed'
+        state.categories = []
+        state.error = (action.payload as string) || i18n.t('errors.loadFailed', 'Tải dữ liệu thất bại.')
+      })
   }
 })
 

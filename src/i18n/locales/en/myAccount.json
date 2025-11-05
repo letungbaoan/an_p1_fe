@@ -42,5 +42,12 @@
   "no_payment_method": "No payment method",
   "no_name": "No name",
   "no_phone": "No phone number",
-  "no_address": "No address"
+  "no_address": "No address",
+  "loading_order_detail": "Loading order details...",
+  "order_not_found": "Order not found.",
+  "error_invalid_order": "Invalid order ID.",
+  "status_update_success": "Status updated successfully!",
+  "status_update_failed": "Failed to update status!",
+  "order_detail_title": "Order Details #{{id}}",
+  "back_to_orders": "Back to Orders"
 }
