@@ -66,6 +66,14 @@ export const registerUser = createAsyncThunk<User, RegisterFormData>(
   'auth/registerUser',
   async (data, { rejectWithValue }) => {
     try {
+      const existingUsers = await api.get<UserData[]>(API_ENDPOINTS.USERS, {
+        params: { email: data.email }
+      })
+
+      if (existingUsers.data.length > 0) {
+        return rejectWithValue('This email is already in use.')
+      }
+
       const newUserPayload: UserData = {
         ...data,
         id: Date.now(),

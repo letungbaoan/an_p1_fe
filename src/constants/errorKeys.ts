@@ -11,5 +11,11 @@ export const ERROR_KEYS = {
   ADDRESS: 'address',
   ORDER_NOTES: 'orderNotes',
   PHONE: 'phone',
-  FULL_NAME: 'fullName'
+  FULL_NAME: 'fullName',
+  PRICE: 'price',
+  DESCRIPTION: 'description',
+  CATEGORY_ID: 'category_id',
+  STOCK_QUANTITY: 'stockQuantity',
+  DISCOUNT_PERCENTAGE: 'discountPercentage',
+  DEAL_END_TIME: 'dealEndTime'
 } as const

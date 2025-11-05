@@ -9,8 +9,6 @@ export interface Product {
   rating: number
   imageUrls: string[]
   dealEndTime: string
-  inStock: boolean
-  onSale: boolean
   reviewCount: number
 }
 

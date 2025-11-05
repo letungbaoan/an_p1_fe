@@ -4,6 +4,7 @@ import { API_ENDPOINTS } from '@/constants/api'
 import { handleApiError } from '@/utils/handleApiError'
 import i18n from '@/i18n'
 import type { Product } from '@/types/product'
+import axios from 'axios'
 
 export interface ProductFilters {
   page: number
@@ -12,6 +13,7 @@ export interface ProductFilters {
   minPrice?: number
   maxPrice?: number
   minRating?: number
+  nameQuery?: string
 }
 
 interface ProductQueryParams {
@@ -21,6 +23,7 @@ interface ProductQueryParams {
   price_gte?: number
   price_lte?: number
   rating_gte?: number
+  name_like?: string
 }
 
 export interface FeaturedParams {
@@ -28,14 +31,35 @@ export interface FeaturedParams {
   page: number
 }
 
+export interface UpdateProductPayload {
+  id: number
+  data: Partial<Product>
+}
+
+export interface AddProductPayload {
+  id: string
+  name: string
+  price: number
+  description: string
+  category_id: number
+  stockQuantity: number
+  discountPercentage: number
+  imageUrls: string[]
+  dealEndTime: string | null
+}
+
 interface ProductsState {
   newProducts: Product[]
   featuredProducts: Product[]
   listProducts: Product[]
+  currentProduct: Product | null
   totalPages: number
   loadingNew: 'idle' | 'pending' | 'succeeded' | 'failed'
   loadingFeatured: 'idle' | 'pending' | 'succeeded' | 'failed'
   loadingList: 'idle' | 'pending' | 'succeeded' | 'failed'
+  loadingDetail: 'idle' | 'pending' | 'succeeded' | 'failed'
+  updating: boolean
+  adding: boolean
   error: string | null
 }
 
@@ -43,12 +67,57 @@ const initialState: ProductsState = {
   newProducts: [],
   featuredProducts: [],
   listProducts: [],
+  currentProduct: null,
   totalPages: 1,
   loadingNew: 'idle',
   loadingFeatured: 'idle',
   loadingList: 'idle',
+  loadingDetail: 'idle',
+  updating: false,
+  adding: false,
   error: null
 }
+
+const getErrorMessage = (error: unknown, fallback: string): string => {
+  if (axios.isAxiosError(error)) return error.message || fallback
+  return fallback
+}
+
+export const fetchProductById = createAsyncThunk<Product, number>(
+  'products/fetchProductById',
+  async (productId, { rejectWithValue }) => {
+    try {
+      const res = await api.get<Product>(`${API_ENDPOINTS.PRODUCTS}/${productId}`)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error, 'Failed to fetch product details.'))
+    }
+  }
+)
+
+export const updateProduct = createAsyncThunk<Product, UpdateProductPayload>(
+  'products/updateProduct',
+  async ({ id, data }, { rejectWithValue }) => {
+    try {
+      const res = await api.patch<Product>(`${API_ENDPOINTS.PRODUCTS}/${id}`, data)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error, 'Failed to update product.'))
+    }
+  }
+)
+
+export const deleteProduct = createAsyncThunk<number, number>(
+  'products/deleteProduct',
+  async (id, { rejectWithValue }) => {
+    try {
+      await api.delete(`${API_ENDPOINTS.PRODUCTS}/${id}`)
+      return id
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error, 'Failed to delete product.'))
+    }
+  }
+)
 
 export const fetchNewProducts = createAsyncThunk<Product[], void>(
   'products/fetchNewProducts',
@@ -80,7 +149,7 @@ export const fetchProductList = createAsyncThunk<{ products: Product[]; totalPag
   'products/fetchProductList',
   async (filters, { rejectWithValue }) => {
     try {
-      const { page, limit, categoryIds, minPrice, maxPrice, minRating } = filters
+      const { page, limit, categoryIds, minPrice, maxPrice, minRating, nameQuery } = filters
 
       const params: ProductQueryParams = {
         _page: page,
@@ -88,17 +157,37 @@ export const fetchProductList = createAsyncThunk<{ products: Product[]; totalPag
         ...(categoryIds?.length ? { category_id: categoryIds } : {}),
         ...(minPrice ? { price_gte: minPrice } : {}),
         ...(maxPrice ? { price_lte: maxPrice } : {}),
-        ...(minRating ? { rating_gte: minRating } : {})
+        ...(minRating ? { rating_gte: minRating } : {}),
+        ...(nameQuery ? { name_like: nameQuery } : {})
       }
 
       const res = await api.get<Product[]>(API_ENDPOINTS.PRODUCTS, { params })
-      const totalCountHeader = res.headers['x-total-count']
-      const totalCount = totalCountHeader ? parseInt(totalCountHeader) : res.data.length
+      const totalCount = Number(res.headers['x-total-count']) || res.data.length
       const totalPages = Math.ceil(totalCount / limit)
 
       return { products: res.data, totalPages }
     } catch (err) {
       return rejectWithValue(handleApiError(err, i18n.t('product:fetchListFailed')))
+    }
+  }
+)
+
+export const addProduct = createAsyncThunk<Product, AddProductPayload>(
+  'products/addProduct',
+  async (productData, { rejectWithValue }) => {
+    try {
+      const fullPayload = {
+        ...productData,
+        rating: 5,
+        reviewCount: 0,
+        inStock: productData.stockQuantity > 0,
+        onSale: productData.discountPercentage > 0
+      }
+
+      const res = await api.post<Product>(API_ENDPOINTS.PRODUCTS, fullPayload)
+      return res.data
+    } catch (err) {
+      return rejectWithValue(handleApiError(err, i18n.t('product:addProductFailed')))
     }
   }
 )
@@ -120,13 +209,13 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchNewProducts.pending, (state) => {
-        state.loadingNew = 'pending'
-        state.error = null
+      .addCase(fetchNewProducts.pending, (s) => {
+        s.loadingNew = 'pending'
+        s.error = null
       })
-      .addCase(fetchNewProducts.fulfilled, (state, action) => {
-        state.loadingNew = 'succeeded'
-        state.newProducts = action.payload
+      .addCase(fetchNewProducts.fulfilled, (s, a) => {
+        s.loadingNew = 'succeeded'
+        s.newProducts = a.payload
       })
       .addCase(fetchNewProducts.rejected, (state, action) => {
         state.loadingNew = 'failed'
@@ -134,13 +223,13 @@ const productsSlice = createSlice({
         state.error = action.payload as string
       })
 
-      .addCase(fetchFeaturedProducts.pending, (state) => {
-        state.loadingFeatured = 'pending'
-        state.error = null
+      .addCase(fetchFeaturedProducts.pending, (s) => {
+        s.loadingFeatured = 'pending'
+        s.error = null
       })
-      .addCase(fetchFeaturedProducts.fulfilled, (state, action) => {
-        state.loadingFeatured = 'succeeded'
-        state.featuredProducts = action.payload
+      .addCase(fetchFeaturedProducts.fulfilled, (s, a) => {
+        s.loadingFeatured = 'succeeded'
+        s.featuredProducts = a.payload
       })
       .addCase(fetchFeaturedProducts.rejected, (state, action) => {
         state.loadingFeatured = 'failed'
@@ -148,20 +237,76 @@ const productsSlice = createSlice({
         state.error = action.payload as string
       })
 
-      .addCase(fetchProductList.pending, (state) => {
-        state.loadingList = 'pending'
-        state.error = null
+      .addCase(fetchProductList.pending, (s) => {
+        s.loadingList = 'pending'
+        s.error = null
       })
-      .addCase(fetchProductList.fulfilled, (state, action) => {
-        state.loadingList = 'succeeded'
-        state.listProducts = action.payload.products
-        state.totalPages = action.payload.totalPages
+      .addCase(fetchProductList.fulfilled, (s, a) => {
+        s.loadingList = 'succeeded'
+        s.listProducts = a.payload.products
+        s.totalPages = a.payload.totalPages
       })
       .addCase(fetchProductList.rejected, (state, action) => {
         state.loadingList = 'failed'
         state.listProducts = []
         state.totalPages = 1
         state.error = action.payload as string
+      })
+
+      .addCase(fetchProductById.pending, (s) => {
+        s.loadingDetail = 'pending'
+        s.currentProduct = null
+        s.error = null
+      })
+      .addCase(fetchProductById.fulfilled, (s, a) => {
+        s.loadingDetail = 'succeeded'
+        s.currentProduct = a.payload
+      })
+      .addCase(fetchProductById.rejected, (s, a) => {
+        s.loadingDetail = 'failed'
+        s.currentProduct = null
+        s.error = a.payload as string
+      })
+
+      .addCase(updateProduct.pending, (s) => {
+        s.updating = true
+        s.error = null
+      })
+      .addCase(updateProduct.fulfilled, (s, a) => {
+        s.updating = false
+        s.currentProduct = a.payload
+        s.listProducts = s.listProducts.map((p) => (p.id === a.payload.id ? a.payload : p))
+      })
+      .addCase(updateProduct.rejected, (s, a) => {
+        s.updating = false
+        s.error = a.payload as string
+      })
+
+      .addCase(deleteProduct.pending, (s) => {
+        s.updating = true
+        s.error = null
+      })
+      .addCase(deleteProduct.fulfilled, (s, a) => {
+        s.updating = false
+        s.listProducts = s.listProducts.filter((p) => p.id !== a.payload)
+        s.currentProduct = null
+      })
+      .addCase(deleteProduct.rejected, (s, a) => {
+        s.updating = false
+        s.error = a.payload as string
+      })
+
+      .addCase(addProduct.pending, (s) => {
+        s.adding = true
+        s.error = null
+      })
+      .addCase(addProduct.fulfilled, (s, a) => {
+        s.adding = false
+        s.listProducts.unshift(a.payload)
+      })
+      .addCase(addProduct.rejected, (s, a) => {
+        s.adding = false
+        s.error = a.payload as string
       })
   }
 })

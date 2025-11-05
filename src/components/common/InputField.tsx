@@ -3,7 +3,7 @@ import React from 'react'
 interface InputFieldProps {
   label: string
   name: string
-  type?: 'text' | 'email' | 'password' | 'textarea' | 'tel'
+  type?: 'text' | 'email' | 'password' | 'textarea' | 'tel' | 'number' | 'datetime-local'
   value?: string
   defaultValue?: string
   placeholder?: string

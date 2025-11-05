@@ -98,12 +98,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({ onApplyFilters }) => {
             min={0}
             max={100}
             step={1}
-            defaultValue={[0, 100]}
+            value={priceRange}
             onChange={(value) => setPriceRange(Array.isArray(value) ? (value as [number, number]) : [value, value])}
             trackStyle={[{ backgroundColor: '#8B5CF6' }]}
             handleStyle={[{ borderColor: '#8B5CF6' }]}
           />
         </div>
+
         <p className='text-sm text-gray-600'>
           {t('product:price_current', { min: priceRange[0], max: priceRange[1] })}
         </p>

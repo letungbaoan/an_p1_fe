@@ -40,5 +40,7 @@
   "load_product_fail": "Load product fail with error: {{error}}",
   "fetchNewFailed": "Failed to fetch new products.",
   "fetchFeaturedFailed": "Failed to fetch featured products.",
-  "fetchListFailed": "Failed to load product list."
+  "fetchListFailed": "Failed to load product list.",
+  "search_placeholder": "Find by name",
+  "addProductFailed": "Add product failed"
 }
