@@ -2,6 +2,7 @@ import React from 'react'
 import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { Order } from '@/types/order'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 interface OrderCardProps {
   order: Order
@@ -11,6 +12,7 @@ interface OrderCardProps {
 
 const OrderCard: React.FC<OrderCardProps> = ({ order, editableStatus = false, onStatusChange }) => {
   const { t } = useTranslation('myAccount')
+  const formatCurrency = useCurrencyFormatter()
 
   const id = order.id ?? '-'
   const date = order.date ?? '-'
@@ -106,7 +108,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, editableStatus = false, on
               <div key={item.product_id ?? Math.random()} className='flex justify-between text-xs'>
                 <span className='w-3/4 truncate'>{item.name ?? t('no_name')}</span>
                 <span className='font-medium text-gray-800'>
-                  {item.quantity ?? 0} x ${(item.price ?? 0).toFixed(2)}
+                  {item.quantity ?? 0} x {formatCurrency(item.price ?? 0)}
                 </span>
               </div>
             ))
@@ -118,7 +120,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, editableStatus = false, on
 
       <div className='mt-4 border-t pt-4 text-right'>
         <span className='text-xl font-extrabold text-purple-600'>
-          {t('total_amount', { amount: total.toFixed(2) })}
+          {t('total_amount', { amount: formatCurrency(total) })}
         </span>
       </div>
     </div>

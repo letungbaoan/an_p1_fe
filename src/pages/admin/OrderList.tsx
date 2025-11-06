@@ -9,9 +9,11 @@ import { useNavigate } from 'react-router-dom'
 import { ADMIN_ROUTES } from '@/constants/routes'
 import { format, parse } from 'date-fns'
 import { enUS, vi } from 'date-fns/locale'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 const OrderList: React.FC = () => {
   const { t, i18n } = useTranslation('admin')
+  const formatCurrency = useCurrencyFormatter()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { list: orders, fetchListLoading, updateLoading, error } = useAppSelector((s: RootState) => s.order)
@@ -110,7 +112,7 @@ const OrderList: React.FC = () => {
             <div className='col-span-1 font-semibold text-gray-900'>#{order.id}</div>
             <div className='col-span-1 text-sm text-gray-600'>{formatDate(order.date)}</div>
             <div className='col-span-2 text-base font-bold text-purple-600'>
-              ${order.total.toFixed(2)} ({t('orderList.productsCount', { count: order.items.length })})
+              {formatCurrency(order.total)} ({t('orderList.productsCount', { count: order.items.length })})
             </div>
 
             <div className='relative col-span-1'>

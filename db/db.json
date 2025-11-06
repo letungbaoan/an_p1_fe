@@ -69,7 +69,7 @@
       "email": "user@gmail.com",
       "role": "user",
       "password": "user123",
-      "active": false
+      "active": true
     },
     {
       "username": "baoan7604@gmail.com",

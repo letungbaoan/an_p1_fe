@@ -34,7 +34,7 @@
   "recipient_address": "Địa chỉ: {{address}}",
   "payment_method": "Thanh toán: {{method}}",
   "product_list": "Sản phẩm ({{count}})",
-  "total_amount": "Tổng cộng: ${{amount}}",
+  "total_amount": "Tổng cộng: {{amount}}",
   "order_date": "Ngày đặt: {{date}}",
   "no_payment_method": "Chưa chọn phương thức thanh toán",
   "no_name": "Chưa có tên",

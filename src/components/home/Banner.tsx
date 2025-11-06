@@ -2,14 +2,15 @@ import { ROUTES } from '@/constants/routes'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 interface BannerProps {
   tagKey: string
   titleKey: string
   descriptionKey: string
   buttonTextKey: string
-  originalPrice: string
-  discountPrice: string
+  originalPrice: number
+  discountPrice: number
   backgroundImageSrc: string
 }
 
@@ -23,6 +24,7 @@ const MyBannerComponent: React.FC<BannerProps> = ({
   backgroundImageSrc
 }) => {
   const { t } = useTranslation('home')
+  const formatCurrency = useCurrencyFormatter()
 
   const backgroundStyle: React.CSSProperties = {
     backgroundImage: `url(${backgroundImageSrc})`,
@@ -54,11 +56,11 @@ const MyBannerComponent: React.FC<BannerProps> = ({
 
           <div className='flex flex-col'>
             <div>
-              <span className='text-2xl font-bold text-red-500'>{discountPrice}</span>
-              <span className='ml-4 text-lg font-bold text-black line-through opacity-80'>{originalPrice}</span>
+              <span className='text-2xl font-bold text-red-500'>{formatCurrency(discountPrice)}</span>
+              <span className='ml-4 text-lg font-bold text-black line-through opacity-80'>
+                {formatCurrency(originalPrice)}
+              </span>
             </div>
-
-            <span className='whitespace-nowrap text-sm text-gray-500'>{t('common.offer_note')}</span>
           </div>
         </div>
       </div>

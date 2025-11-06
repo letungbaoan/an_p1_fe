@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { type Product } from '@/types/product'
-import { Heart, Plus } from 'lucide-react'
-import ProductRating from '@/components/common/ProductRating'
-import DealTimer from '@/components/common/DealTimer'
 import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import { Heart, Plus } from 'lucide-react'
+import type { Product } from '@/types/product'
+import ProductRating from '@/components/common/ProductRating'
 import SafeImage from '@/components/common/SafeImage'
 import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
 import toast from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
+import DealTimer from '@/components/common/DealTimer'
 
 interface HorizontalProductCardProps {
   product: Product
@@ -15,6 +16,7 @@ interface HorizontalProductCardProps {
 
 const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }) => {
   const { t } = useTranslation(['product', 'toast'])
+  const formatCurrency = useCurrencyFormatter()
   const discountPercentage = product.discountPercentage || 0
   const price = product.price || 0
   const rating = product.rating ?? 0
@@ -57,7 +59,7 @@ const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }
             onClick={handleFavoriteClick}
             className='absolute right-0 top-0 z-10 rounded-full bg-white p-1 shadow-md transition hover:scale-110'
           >
-            <Heart size={16} className='text-gray-400 hover:text-red-500' />
+            <Heart className={`${liked ? 'text-red-500' : 'text-gray-400'}`} size={16} />
           </button>
 
           <SafeImage
@@ -82,9 +84,9 @@ const HorizontalProductCard: React.FC<HorizontalProductCardProps> = ({ product }
           <div className='mt-auto flex items-end justify-between'>
             <div className='flex flex-col'>
               <div className='mb-2 flex items-end space-x-3'>
-                <span className='text-3xl font-extrabold text-red-600'>${price.toFixed(2)}</span>
+                <span className='text-3xl font-extrabold text-red-600'>{formatCurrency(price)}</span>
                 {isDiscounted && (
-                  <span className='text-lg text-gray-600 line-through'>${originalPrice.toFixed(2)}</span>
+                  <span className='text-lg text-gray-600 line-through'>{formatCurrency(originalPrice)}</span>
                 )}
               </div>
 

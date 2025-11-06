@@ -11,6 +11,17 @@ interface BannerSlideData {
   titleKey: string
   descriptionKey: string
   buttonTextKey: string
+  originalPrice: number
+  discountPrice: number
+}
+
+interface RawBannerData {
+  id: number
+  backgroundImageSrc: string
+  tagKey: string
+  titleKey: string
+  descriptionKey: string
+  buttonTextKey: string
   originalPrice: string
   discountPrice: string
 }
@@ -29,11 +40,18 @@ const AutoSlidingTabPanel: React.FC = () => {
     const fetchBanners = async () => {
       try {
         setError('')
-        const res = await api.get(API_ENDPOINTS.BANNERS)
-        setBannerSlides(res.data || [])
+        const res = await api.get<RawBannerData[]>(API_ENDPOINTS.BANNERS)
+
+        const processedData: BannerSlideData[] = res.data.map((raw) => ({
+          ...raw,
+          originalPrice: parseFloat(raw.originalPrice.replace('$', '').replace(',', '')),
+          discountPrice: parseFloat(raw.discountPrice.replace('$', '').replace(',', ''))
+        }))
+
+        setBannerSlides(processedData || [])
+        setLoading(false)
       } catch (error) {
         setError(t('error_fetch_banners', { error: error }))
-      } finally {
         setLoading(false)
       }
     }
@@ -54,6 +72,27 @@ const AutoSlidingTabPanel: React.FC = () => {
   const transformRatio = 100 / (bannerSlides.length || 1)
   const translateXValue = `-${currentIndex * transformRatio}%`
 
+  const renderSliderContent = () => (
+    <div
+      className={`flex h-full transition-transform ease-in-out ${transitionDuration}`}
+      style={{ width: `${bannerSlides.length * 100}%`, transform: `translateX(${translateXValue})` }}
+    >
+      {bannerSlides.map((slide) => (
+        <div key={slide.id} className='h-full shrink-0' style={{ flexBasis: `${100 / bannerSlides.length}%` }}>
+          <MyBannerComponent
+            tagKey={slide.tagKey}
+            titleKey={slide.titleKey}
+            descriptionKey={slide.descriptionKey}
+            buttonTextKey={slide.buttonTextKey}
+            originalPrice={slide.originalPrice}
+            discountPrice={slide.discountPrice}
+            backgroundImageSrc={slide.backgroundImageSrc}
+          />
+        </div>
+      ))}
+    </div>
+  )
+
   return (
     <div className='relative mx-auto my-8 h-[500px] w-full max-w-7xl overflow-hidden rounded-lg shadow-xl'>
       {loading && <div className='flex h-full items-center justify-center text-gray-500'>{t('loading_banners')}</div>}
@@ -72,25 +111,7 @@ const AutoSlidingTabPanel: React.FC = () => {
 
       {!loading && !error && bannerSlides.length > 0 && (
         <>
-          <div
-            className={`flex h-full transition-transform ease-in-out ${transitionDuration}`}
-            style={{ width: `${bannerSlides.length * 100}%`, transform: `translateX(${translateXValue})` }}
-          >
-            {bannerSlides.map((slide) => (
-              <div key={slide.id} className='h-full shrink-0' style={{ flexBasis: `${100 / bannerSlides.length}%` }}>
-                <MyBannerComponent
-                  tagKey={slide.tagKey}
-                  titleKey={slide.titleKey}
-                  descriptionKey={slide.descriptionKey}
-                  buttonTextKey={slide.buttonTextKey}
-                  originalPrice={slide.originalPrice}
-                  discountPrice={slide.discountPrice}
-                  backgroundImageSrc={slide.backgroundImageSrc}
-                />
-              </div>
-            ))}
-          </div>
-
+          {renderSliderContent()}
           <div className='absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center justify-center space-x-2 rounded-full bg-white p-2 shadow-md'>
             {bannerSlides.map((_, index) => (
               <button

@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { ROUTES, ADMIN_ROUTES } from '@/constants/routes'
 import { useAppDispatch } from '@/redux/hooks'
 import { deleteProduct } from '@/redux/slices/productsSlice'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 interface ProductCardProps {
   product: Product
@@ -27,6 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   disableWishlist = false
 }) => {
   const { t } = useTranslation(['product', 'toast', 'admin'])
+  const formatCurrency = useCurrencyFormatter()
   const [liked, setLiked] = useState(false)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -42,10 +44,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const rating = product.rating ?? 0
   const reviewCount = product.reviewCount ?? 0
   const name = product.name ?? t('no_name')
+  const productDetailLink = `${detailRoutePrefix}/${product.id}`
 
   const isEditingMode = detailRoutePrefix === ADMIN_ROUTES.PRODUCTS_BASE
-
-  const productDetailLink = `${detailRoutePrefix}/${product.id}`
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -84,6 +85,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div
       className={`group relative min-h-[200px] w-full overflow-hidden border border-gray-200 bg-white shadow-sm transition duration-300 hover:shadow-md ${className}`}
     >
+      {/* 1. KHU VỰC ẢNH VÀ NÚT ADD TO CART (Đã thay đổi) */}
       <div className='relative flex h-40 items-center justify-center bg-gray-50 p-2'>
         {isDiscounted && (
           <div className='absolute left-2 top-2 z-10 rounded-full bg-red-600 px-2 py-0.5 text-xs font-bold text-white'>
@@ -103,8 +105,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
           alt={name}
           className='max-h-full max-w-full rounded object-contain'
         />
+
+        {/* ⬅️ NÚT ADD TO CART ĐƯỢC CHUYỂN XUỐNG DƯỚI GÓC PHẢI CỦA ẢNH */}
+        {!disableCart && (
+          <button
+            className='absolute bottom-2 right-2 z-10 rounded-full bg-purple-600 p-2 text-white shadow-lg transition hover:bg-purple-700'
+            onClick={handleAddToCartClick}
+          >
+            <Plus size={16} />
+          </button>
+        )}
       </div>
 
+      {/* 2. Vùng Thông tin chính */}
       <div className='p-2'>
         <ProductRating rating={rating} reviewCount={reviewCount} />
 
@@ -116,23 +129,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {name}
         </Link>
 
-        <div className='mt-2 flex items-center justify-between'>
-          <div className='flex flex-row items-center space-x-2'>
-            <span className='text-lg font-bold text-red-600'>${price.toFixed(2)}</span>
-            {isDiscounted && <span className='text-base text-gray-600 line-through'>${originalPrice.toFixed(2)}</span>}
+        {/* ⬅️ SỬA: CHỈNH SỬA KÍCH THƯỚC VÀ PHÂN CẤP GIÁ */}
+        <div className='mt-2 flex items-end justify-between'>
+          <div className='flex flex-row items-baseline space-x-2'>
+            {/* Giá hiện tại (giữ nguyên size lớn) */}
+            <span className='text-lg font-bold text-red-600'>{formatCurrency(price)}</span>
+
+            {/* Giá gốc (giảm size thành text-sm) */}
+            {isDiscounted && (
+              <span className='text-sm text-gray-600 line-through'>{formatCurrency(originalPrice)}</span>
+            )}
           </div>
 
-          {!disableCart && (
-            <button
-              className='rounded-lg bg-purple-600 p-2 text-white transition hover:bg-purple-700'
-              onClick={handleAddToCartClick}
-            >
-              <Plus size={16} />
-            </button>
-          )}
+          {/* ❌ XÓA NÚT ADD TO CART TRUYỀN THỐNG Ở ĐÂY */}
         </div>
       </div>
 
+      {/* ADMIN ACTIONS */}
       {isEditingMode && (
         <div className='mt-auto flex items-center justify-around border-t p-2'>
           <button
