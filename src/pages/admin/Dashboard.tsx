@@ -15,13 +15,15 @@ import {
 import { DollarSign, ShoppingBag, Users, Star } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { Review } from '@/components/product/ProductReviews'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const DashboardPage: React.FC = () => {
   const dispatch = useAppDispatch()
   const { data: dashboard, loading, error } = useAppSelector((state) => state.dashboard)
-  const { t, i18n } = useTranslation('dashboard')
+  const { t } = useTranslation('dashboard')
+  const formatCurrency = useCurrencyFormatter()
 
   useEffect(() => {
     if (loading === 'idle') {
@@ -40,7 +42,7 @@ const DashboardPage: React.FC = () => {
   const { totalOrders, totalSales, totalUsers, recentReviews, salesChartData, chartLabels } = dashboard
 
   const chartData = {
-    labels: chartLabels.map((month) => t(`month_short`, { month })),
+    labels: chartLabels,
     datasets: [
       {
         label: t('sales_chart_label'),
@@ -56,15 +58,22 @@ const DashboardPage: React.FC = () => {
     responsive: true,
     plugins: {
       legend: { display: false },
-      title: { display: true, text: t('sales_chart_title') }
+      title: { display: true, text: t('sales_chart_title') },
+      tooltip: {
+        callbacks: {
+          label: (context) => formatCurrency(context.parsed.y)
+        }
+      }
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: function (value) {
+            return formatCurrency(Number(value))
+          }
+        }
+      }
     }
-  }
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat(i18n.language === 'vi' ? 'vi-VN' : 'en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount)
   }
 
   return (
@@ -100,13 +109,13 @@ interface KPICardProps {
   color: string
 }
 
-const KPICard: React.FC<KPICardProps> = ({ title, value, icon: Icon, color }) => (
+const KPICard: React.FC<KPICardProps> = ({ title, value, icon: Icon }) => (
   <div className='flex items-center justify-between rounded-xl border-l-4 border-purple-600 bg-white p-4 shadow-md'>
     <div>
       <p className='text-sm font-medium text-gray-500'>{title}</p>
       <h2 className='mt-1 text-3xl font-extrabold text-gray-900'>{value}</h2>
     </div>
-    <div className={`rounded-full bg-gray-100 p-3 ${color}`}>
+    <div className='rounded-full bg-gray-100 p-3'>
       <Icon size={24} />
     </div>
   </div>

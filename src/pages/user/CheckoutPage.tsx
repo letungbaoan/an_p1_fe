@@ -112,7 +112,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className='space-y-6 md:col-span-2'>
-            <OrderSummary items={checkoutItems} total={total} t={t} />
+            <OrderSummary items={checkoutItems} total={total} />
             <PaymentMethods t={t} selectedMethod={paymentMethod} onChange={setPaymentMethod} />
             <PlaceOrderAction t={t} isSubmitting={isSubmitting} />
           </div>

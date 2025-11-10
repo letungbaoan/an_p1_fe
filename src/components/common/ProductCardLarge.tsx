@@ -7,6 +7,7 @@ import { addToCart, toggleWishlist, isInWishlist } from '@/utils/storage'
 import toast from 'react-hot-toast'
 import SafeImage from '@/components/common/SafeImage'
 import { useTranslation } from 'react-i18next'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 interface ProductCardLargeProps {
   product: Product
@@ -14,6 +15,7 @@ interface ProductCardLargeProps {
 
 const ProductCardLarge: React.FC<ProductCardLargeProps> = ({ product }) => {
   const { t } = useTranslation(['product', 'toast'])
+  const formatCurrency = useCurrencyFormatter()
   const [liked, setLiked] = useState(false)
 
   useEffect(() => {
@@ -83,8 +85,10 @@ const ProductCardLarge: React.FC<ProductCardLargeProps> = ({ product }) => {
           </Link>
 
           <div className='mb-4 flex items-end space-x-2'>
-            <span className='text-3xl font-extrabold text-red-600'>${price.toFixed(2)}</span>
-            {isDiscounted && <span className='text-xl text-gray-500 line-through'>${originalPrice.toFixed(2)}</span>}
+            <span className='text-3xl font-extrabold text-red-600'>{formatCurrency(price)}</span>
+            {isDiscounted && (
+              <span className='text-xl text-gray-500 line-through'>{formatCurrency(originalPrice)}</span>
+            )}
           </div>
 
           <p className='mb-4 text-sm leading-relaxed text-gray-600'>{description}</p>

@@ -5,6 +5,7 @@ import { ROUTES } from '@/constants/routes'
 import type { CartItem } from '@/types/product'
 import { X } from 'lucide-react'
 import SafeImage from '@/components/common/SafeImage'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 interface CartPreviewModalProps {
   cartItems?: CartItem[]
@@ -13,6 +14,7 @@ interface CartPreviewModalProps {
 
 const CartPreviewModal: React.FC<CartPreviewModalProps> = ({ cartItems = [], onRemoveItem }) => {
   const { t } = useTranslation('header')
+  const formatCurrency = useCurrencyFormatter()
 
   const total = useMemo(() => {
     if (!Array.isArray(cartItems)) return 0
@@ -48,10 +50,10 @@ const CartPreviewModal: React.FC<CartPreviewModalProps> = ({ cartItems = [], onR
                 <div className='grow'>
                   <p className='max-w-[180px] truncate text-sm font-medium text-gray-800'>{name}</p>
                   <p className='text-xs text-gray-500'>
-                    {amount} x ${price.toFixed(2)}
+                    {amount} x {formatCurrency(price)}
                   </p>
                 </div>
-                <span className='text-sm font-bold text-purple-600'>${(price * amount).toFixed(2)}</span>
+                <span className='text-sm font-bold text-purple-600'>{formatCurrency(price * amount)}</span>
 
                 {onRemoveItem && product?.id && (
                   <button
@@ -71,7 +73,7 @@ const CartPreviewModal: React.FC<CartPreviewModalProps> = ({ cartItems = [], onR
       <div className='border-t p-4'>
         <div className='mb-3 flex justify-between font-bold'>
           <span className='text-base'>{t('cart:total')}</span>
-          <span className='text-xl text-purple-600'>${total.toFixed(2)}</span>
+          <span className='text-xl text-purple-600'>{formatCurrency(total)}</span>
         </div>
         <Link
           to={ROUTES.CART}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
@@ -6,9 +6,11 @@ import { addCheckoutItems, getCart, removeFromCart } from '@/utils/storage'
 import type { CartItem } from '@/types/product'
 import { Trash2, Plus, Minus } from 'lucide-react'
 import SafeImage from '@/components/common/SafeImage'
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter'
 
 const CartDetails: React.FC = () => {
   const { t } = useTranslation('cart')
+  const formatCurrency = useCurrencyFormatter()
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const navigate = useNavigate()
 
@@ -27,9 +29,23 @@ const CartDetails: React.FC = () => {
   }, [cartItems])
 
   const updateCartStorage = (updated: CartItem[]) => {
-    localStorage.setItem('cart_items', JSON.stringify(updated))
+    localStorage.setItem('cart', JSON.stringify(updated))
     window.dispatchEvent(new Event('cartUpdated'))
   }
+
+  const updateCartState = () => {
+    const cart = getCart()
+    setCartItems(Array.isArray(cart) ? cart : [])
+  }
+
+  useEffect(() => {
+    updateCartState()
+    window.addEventListener('cartUpdated', updateCartState)
+
+    return () => {
+      window.removeEventListener('cartUpdated', updateCartState)
+    }
+  }, [])
 
   const increaseQuantity = (productId?: number) => {
     if (!productId) return
@@ -70,7 +86,7 @@ const CartDetails: React.FC = () => {
     if (!cartItems || cartItems.length === 0) return
 
     addCheckoutItems('cart', cartItems)
-    navigate('/checkout')
+    navigate(ROUTES.CHECKOUT)
   }
 
   if (!cartItems || cartItems.length === 0) {
@@ -103,7 +119,7 @@ const CartDetails: React.FC = () => {
                 <SafeImage src={imageSrc} alt={name} className='size-16 rounded object-contain' />
                 <div>
                   <h2 className='text-lg font-semibold text-gray-800'>{name}</h2>
-                  <p className='text-sm text-gray-500'>${price.toFixed(2)}</p>
+                  <p className='text-sm text-gray-500'>{formatCurrency(price)}</p>
                 </div>
               </div>
 
@@ -126,7 +142,7 @@ const CartDetails: React.FC = () => {
                   </button>
                 </div>
 
-                <span className='w-20 text-right font-bold text-purple-600'>${(price * amount).toFixed(2)}</span>
+                <span className='w-20 text-right font-bold text-purple-600'>{formatCurrency(price * amount)}</span>
 
                 <button
                   onClick={() => handleRemove(product?.id)}
@@ -143,7 +159,7 @@ const CartDetails: React.FC = () => {
 
       <div className='mt-8 flex items-center justify-between border-t pt-6'>
         <h2 className='text-xl font-bold text-gray-800'>{t('total')}:</h2>
-        <span className='text-2xl font-bold text-purple-600'>${total.toFixed(2)}</span>
+        <span className='text-2xl font-bold text-purple-600'>{formatCurrency(total)}</span>
       </div>
 
       <div className='mt-6 text-right'>
